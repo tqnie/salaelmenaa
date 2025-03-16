@@ -81,6 +81,6 @@ class User extends Authenticatable
     ];
 
     public function offers(){
-        return $this->hasMany(Offer::class,'product_id');
+        return $this->hasMany(Offer::class);
     }
 }
