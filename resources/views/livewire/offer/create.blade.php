@@ -11,11 +11,11 @@
                 <div class="breadcrumbs-inner">
                     <div class="container">
                         <div class="breadcrumbs-text">
-                            <h1 class="breadcrumbs-title">اشترك الان في </h1>
+                            <h1 class="breadcrumbs-title"> اضف فيديو </h1>
                             <div class="back-nav">
                                 <ul>
                                     <li><a href="{{route('home')}}">الرئيسية</a></li>
-                                    <li>اشترك الان في   </li>
+                                    <li>اشترك الان في {{$productDetials->title}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <!--================= Form Section Start Here =================-->
                         <div class="back-blog-form">  
                             <div class="back-title-sec">
-                                <h2>اضف فيديو  <br> و الاشتراك ك </h2>
+                                <h2>وقم بالاشتراك في  {{$productDetials->title}}</h2>
                             </div> 
                             <div class="row pt-50"> 
                                

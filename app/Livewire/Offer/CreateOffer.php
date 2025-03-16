@@ -6,6 +6,7 @@ namespace App\Livewire\Offer;
 use App\Livewire\Forms\OfferForm;
 use App\Models\Package;
 use App\Models\Offer;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -26,7 +27,8 @@ class CreateOffer extends Component
     #[Url]
     public ?Package $package;
     #[Url]
-    public $product;
+    public $product; 
+    public ?Product $productDetials;
     #[Url]
     public $type;
 
@@ -38,6 +40,9 @@ class CreateOffer extends Component
             $user = User::find(Auth::id());
             $this->offerForm->setUser($user);
             $this->offerForm->setProduct($this->product);
+        }
+        if($this->product){
+            $this->productDetials=Product::find($this->product);
         }
     }
 
