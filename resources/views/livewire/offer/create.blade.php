@@ -29,41 +29,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!--================= Form Section Start Here =================-->
-                        <div class="back-blog-form">  
-                            <div class="back-title-sec">
-                                <h2> اشترك الان في خطة  </h2>
-                            </div> 
-                            <div class="row pt-50"> 
-                               
-                                <div class="col-lg-12">
-                                    <div id="blog-form" class="blog-form">
-                                        <x-auth-session-status class="mb-4" :status="session('status')" />
-                                        
-                                        <form wire:submit="sup" id="contact-form" >                                                    
-                                            <div class="row"> 
-                                                <div class="col-lg-6 pdl-5">
-                                                    <div class="back-input">
-                                                        <x-input-label for="package" :value="__('نوع الاشتراك')" />
-                                                        <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
-                                                            name="package">
-                                                            @foreach(App\Models\Package::get() as $package)
-                                                                <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
-                                                            @endforeach 
-                                                        </select>
-                                                        <x-input-error :messages="$errors->get('offerForm.package')" class="mt-2" />               
-                                                    </div>
-                                                </div> 
-                                                <div class="col-lg-12">      
-                                                    <x-primary-button >
-                                                        {{ __('اشتراك ') }}
-                                                    </x-primary-button>       
-                                                </div>
-                                            </div>                                                    
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>                                      
-                        </div>
+                       
                         <!--================= Form Section End Here =================-->
  
                         <!--================= Form Section Start Here =================-->
@@ -79,6 +45,7 @@
                                         
                                         <form wire:submit="addOffer"   enctype="multipart/form-data" id="contact-form" >                                                    
                                             <div class="row">
+
                                                 <div class="col-lg-6">
                                                     <div class="back-input">
                                                         <x-input-label for="title" :value="__('العنوان')" />
@@ -142,7 +109,19 @@
                                                             </div>
                                                     </div>
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
-                                                </div>                                               
+                                                </div>   
+                                                <div class="col-lg-12 pdl-5">
+                                                    <div class="back-input">
+                                                        <x-input-label for="package" :value="__('نوع الاشتراك')" />
+                                                        <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
+                                                            name="package">
+                                                            @foreach(App\Models\Package::get() as $package)
+                                                                <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
+                                                            @endforeach 
+                                                        </select>
+                                                        <x-input-error :messages="$errors->get('offerForm.package')" class="mt-2" />               
+                                                    </div>
+                                                </div>                                             
                                                 <div class="col-lg-12">      
                                                     <x-primary-button >
                                                         {{ __('اضافة ') }}
