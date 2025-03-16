@@ -46,8 +46,8 @@
                                                         <x-input-label for="package" :value="__('نوع الاشتراك')" />
                                                         <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
                                                             name="package">
-                                                            @foreach(App\Models\Packege::get() as $package)
-                                                                <option @selected(old('packege')==$package->id) value="{{$package->id}}">{{$packege->title}}</option>
+                                                            @foreach(App\Models\Package::get() as $package)
+                                                                <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
                                                             @endforeach 
                                                         </select>
                                                         <x-input-error :messages="$errors->get('offerForm.package')" class="mt-2" />               
