@@ -23,8 +23,7 @@ Route::get('post/{post:slug}', PostShow::class)
     ->name('posts.show');
 Route::get('page/{page:slug}', PageShow::class)
     ->name('page.show');
-
-    Route::get('product/{slug}', ProductUsers::class)
+Route::get('product/{slug}', ProductUsers::class)
     ->name('product-users');
 
 
@@ -38,8 +37,6 @@ Route::middleware('auth')->group(function () {
     //notify
     Route::get('notify', Notify::class)
         ->name('notify');
-
-
     // offers
     Route::get('offers', Offers::class)
         ->name('offers');

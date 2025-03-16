@@ -17,24 +17,24 @@ class ProductUsers extends Component
     public $slug;
 
     public ?Product $product;
-    
+
     public function mount()
     {
-
         if ($this->slug) {
             $this->product = Product::where('slug', $this->slug)->first();
-            }
-        
+            dd($this->product);
+        }
     }
 
-    public function users(){
-        return  User::whereHas('offers', function ($query) {
-            return $query->where('product_id', $this->product->id);
-        })->withCount(['offers as seller' => fn($q) => $q->where('product_id', $this->product->id)->where('type', 'seller'), 'offers as buyer' => fn($q) => $q->where('product_id', $this->product->id)->where('type', 'buyer')])->get();
-    
+    public function users()
+    {
+        $productId = $this->product->id;
+        return  User::whereHas('offers', function ($query) use ($productId) {
+            return $query->where('product_id', $productId);
+        })->withCount(['offers as seller' => fn($q) => $q->where('product_id', $productId)->where('type', 'seller'), 'offers as buyer' => fn($q) => $q->where('product_id', $productId)->where('type', 'buyer')])->get();
     }
     public function render()
     {
-        return view('livewire.product-users',['users'=>$this->users()]);
+        return view('livewire.product-users', ['users' => $this->users()]);
     }
 }
