@@ -22,12 +22,12 @@ class ProductUsers extends Component
     {
         if ($this->slug) {
             $this->product = Product::where('slug', $this->slug)->first();
-            dd($this->product);
+          
         }
     }
 
     public function users()
-    {
+    {  dd($this->product);
         $productId = $this->product->id;
         return  User::whereHas('offers', function ($query) use ($productId) {
             return $query->where('product_id', $productId);
