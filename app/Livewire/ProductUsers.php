@@ -27,7 +27,7 @@ class ProductUsers extends Component
     }
 
     public function users()
-    {  dd($this->product);
+    { 
         $productId = $this->product->id;
         return  User::whereHas('offers', function ($query) use ($productId) {
             return $query->where('product_id', $productId);
