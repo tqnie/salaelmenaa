@@ -24,8 +24,8 @@ class CreateOffer extends Component
 
     use WithFileUploads;
     public OfferForm $offerForm;
-    // #[Url]
-    public ?Package $package;
+    #[Url]
+    public  $package;
     #[Url]
     public $product; 
     public ?Product $productDetials;
