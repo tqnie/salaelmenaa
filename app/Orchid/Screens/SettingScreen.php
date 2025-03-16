@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Orchid\Screen\Screen;
 
 use Orchid\Screen\Actions\Button;
@@ -152,6 +153,7 @@ class SettingScreen extends Screen
 
     public function save(Request $request): void
     {
+        Cache::flush();
         $settings = $request->only('site_name', 'site_logo', 'site_description', 'mobile', 'email', 'advertiser_ratio', 'fixed_amount', 'facebook', 'twitter', 'site_status');
         foreach ($settings as $key => $value) {
             Setting::set($key, $value ?? '');
