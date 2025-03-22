@@ -59,7 +59,7 @@
                  </div>
              </div>
              <div class="text-center pt-20">
-                {{ $posts->links() }}
+                {{ $products->links() }}
                  {{-- <a href="javascript:void(0)"  class="back-btn-border">تحميل المزيد</a> --}}
              </div>
          </div>
