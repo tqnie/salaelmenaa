@@ -6,7 +6,10 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Livewire\Attributes\Layout;
 
+
+#[Layout('layouts.app')]
 class Home extends Component
 {
     use WithPagination, WithoutUrlPagination; 

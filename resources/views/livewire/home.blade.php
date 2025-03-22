@@ -1,4 +1,4 @@
-<div><x-app-layout>
+<div> 
     <!--================= back wrapper Start Here =================-->
     <div class="back-wrapper">
      <div class="back-wrapper-inner gym-page-wrapper">
@@ -70,6 +70,5 @@
      </div>
  </div>
  <!--================= Back Wrapper End Here =================-->
-
-</x-app-layout>
+ 
 </div>
