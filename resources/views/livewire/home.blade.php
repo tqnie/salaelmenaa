@@ -20,7 +20,7 @@
                                  <p class="slider-subtitle">
                                     لم يسبق ان عرضت فارجاء التواصل معنا<br>لنشر المنتجات .
                                  </p>
-                                 <a href="{{route('page','contact-us')}}" class="back-btn">تواصل معنا</a>                                        
+                                 <a href="{{route('page.show','contact-us')}}" class="back-btn">تواصل معنا</a>                                        
                              </div>
                          </div>
                      </div>                        
