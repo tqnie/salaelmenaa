@@ -35,7 +35,7 @@ new class extends Component
                     <!--================= Menu Structure =================--> 
                     <div class="back-inner-menus">
                         <ul id="backmenu" class="back-menus back-sub-shadow">
-                            <li class="mega-inner"><a href="#">الرئيسية</a></li>
+                            <li class="mega-inner"><a href="{{route('home')}}">الرئيسية</a></li>
                             <li> <a href="{{route('profile')}}">حسابي</a></li>                                                                   
                              <li> <a href="{{route('posts.index')}}">المدونة</a></li>
                             <li> <a href="{{route('page.show','contact-us')}}">اتصل بنا</a></li>
@@ -51,7 +51,7 @@ new class extends Component
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-unlock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
                                     تسجيل دخول</a>
                                 </div>
-                                <a href="{{route('home')}}"  class="back-btn">اشتراك</a>
+                                <a href="{{route('register')}}"  class="back-btn">اشتراك</a>
                             @endauth
                         </div>
                     </div>

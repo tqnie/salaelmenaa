@@ -18,7 +18,7 @@ class Product extends Model
         return $query->where('status','active');
     }
     public function offers(){
-        return $this->hasMany(Offer::class,'product_id');
+        return $this->hasMany(Offer::class);
     }
    
 }

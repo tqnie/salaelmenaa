@@ -28,7 +28,7 @@ class OfferForm extends Form
     public  $image;
     #[Validate('required|mimes:mp4,mov,avi,mkv|max:102400')]
     public  $video;
-   
+  
     public ?Offer $offer;
     public function setUser(?User $user)
     {

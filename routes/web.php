@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Notify;
 use App\Livewire\Subscription;
@@ -13,7 +14,7 @@ use App\Livewire\Post\Posts;
 use Livewire\Volt\Volt;
 
 
-Route::view('/', 'home')->name('home');
+Route::get('/', Home::class)->name('home');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
@@ -23,6 +24,7 @@ Route::get('post/{post:slug}', PostShow::class)
     ->name('posts.show');
 Route::get('page/{page:slug}', PageShow::class)
     ->name('page.show');
+ 
 Route::get('product/{slug}', ProductUsers::class)
     ->name('product-users');
 

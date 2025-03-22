@@ -7,6 +7,7 @@ use App\Livewire\Forms\OfferForm;
 use App\Models\Package;
 use App\Models\Offer;
 use App\Models\Product;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -25,13 +26,12 @@ class CreateOffer extends Component
     use WithFileUploads;
     public OfferForm $offerForm;
     #[Url]
-    public  $package;
-    #[Url]
-    public $product; 
+    public $product;
     public ?Product $productDetials;
     #[Url]
     public $type;
-
+    #[Url]
+    public $package;
 
     public function mount()
     {
@@ -41,8 +41,8 @@ class CreateOffer extends Component
             $this->offerForm->setUser($user);
             $this->offerForm->setProduct($this->product);
         }
-        if($this->product){
-            $this->productDetials=Product::find($this->product);
+        if ($this->product) {
+            $this->productDetials = Product::find($this->product);
         }
     }
 
@@ -58,7 +58,7 @@ class CreateOffer extends Component
     }
     public function addOffer(): void
     {
-         if (!Auth::Id()) {
+        if (!Auth::Id()) {
             Toaster::warning('انت غير مشترك سجل دخول ثم اضف اعلان');
             return;
         }
@@ -66,31 +66,40 @@ class CreateOffer extends Component
             Toaster::error('بانتظار تفعيل العضوية ');
             return;
         }
+        $subscription=$this->subscription;
+        if(!$subscription){
+            $package=Package::find($this->package);
+            $subscription=Subscription::create(['package_id'=>$this->package,'status'=>null,'user_id'=>Auth::Id(),'quantity'=>$package->quantity]);
+        }
         $this->offerForm->store();
         if ($this->offerForm->offer) {
             $this->offerForm->reset();
-            if (Auth::Id()) {
-                $user = User::find(Auth::Id());
-                $this->offerForm->setUser($user);
-            }
+            
+            $user = User::find(Auth::Id());
+            $this->offerForm->setUser($user);
+        
 
             try {
                 Toaster::success('تم اضافةً الاعلان ');
             } catch (\Throwable $th) {
                 Toaster::error('خطا في ارسال  الاشعار');
             }
-        }else{
+        } else {
             Toaster::error('أكمل الحقول');
         }
     }
 
-  
+
+    public function subscription()
+    {
+        return  Auth::user()->subscription;
+    }
     public function offers()
     {
         return Offer::my(Auth::Id())->get();
     }
     public function render()
     {
-        return view('livewire.offer.create', ['offers' => $this->offers() , 'user' => Auth::user()]);
+        return view('livewire.offer.create', ['offers' => $this->offers(), 'subscription'=>$this->subscription(),'user' => Auth::user()]);
     }
 }

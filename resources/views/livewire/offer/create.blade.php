@@ -110,18 +110,22 @@
                                                     </div>
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
                                                 </div>   
-                                                <div class="col-lg-12 pdl-5">
-                                                    <div class="back-input">
-                                                        <x-input-label for="package" :value="__('نوع الاشتراك')" />
-                                                        <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
-                                                            name="package">
-                                                            @foreach(App\Models\Package::get() as $package)
-                                                                <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
-                                                            @endforeach 
-                                                        </select>
-                                                        <x-input-error :messages="$errors->get('offerForm.package')" class="mt-2" />               
-                                                    </div>
-                                                </div>                                             
+                                                @if($offerForm->type=='seller' && $subscription=null) 
+                                                    <div  class="col-lg-12 pdl-5">
+                                                        <div class="back-input">
+                                                            <x-input-label for="package" :value="__('نوع الاشتراك')" />
+                                                            <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
+                                                                name="package">
+                                                                @foreach(App\Models\Package::get() as $package)
+                                                                    <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
+                                                                @endforeach 
+                                                            </select>
+                                                            <x-input-error :messages="$errors->get('package')" class="mt-2" />               
+                                                        </div>
+                                                    </div> 
+                                                    @else 
+                                                     
+                                                @endif                                           
                                                 <div class="col-lg-12">      
                                                     <x-primary-button >
                                                         {{ __('اضافة ') }}

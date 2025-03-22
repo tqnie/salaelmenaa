@@ -80,9 +80,9 @@
                                     <h3 class="footer-title">روابط هامة</h3>
                                     <div class="footer-menu">
                                         <ul>
-                                            <li><a href="#">عن الموقع</a></li>
-                                            <li><a href="#">المنتجات</a></li>
-                                            <li><a href="#">اتصل بنا</a></li>
+                                            <li><a href="{{route('page.show','about-us')}}">عن الموقع</a></li>
+                                            <li><a href="{{route('page.show','contact-us')}}">المنتجات</a></li>
+                                            <li><a href="{{route('page.show','contact-us')}}">اتصل بنا</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -92,15 +92,15 @@
                                     <h3 class="footer-title">السياسة</h3>
                                     <div class="footer-menu">
                                         <ul>
-                                            <li><a href="#">سياسة الخصوصية</a></li>
-                                            <li><a href="#">سياسة الاستخدام</a></li>
-                                            <li><a href="#">الاسئلة الشائعة</a></li>
+                                            <li><a href="{{route('page.show','pl')}}">سياسة الخصوصية</a></li>
+                                            <li><a href="{{route('page.show','term')}}">سياسة الاستخدام</a></li>
+                                            <li><a href="{{route('page.show','fql')}}">الاسئلة الشائعة</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                
+                                {{setting('site_description')}}
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                 
                 <div class="copyright">  
                     <div class="container">                  
-                        <div class="back-copy-left">سلا بورت </div>                    
+                        <div class="back-copy-left">{{setting('site_name')}}</div>                    
                     </div>
                 </div>
             </footer>

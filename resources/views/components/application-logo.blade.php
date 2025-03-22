@@ -1,1 +1,7 @@
-<img src="{{asset('assets/images/logo.png')}}" alt='alsala' />
+<img  
+    @if(setting('site_logo')!='') 
+        src="{{asset('storage/'.setting('site_logo'))}}" 
+    @else
+        src="{{asset('assets/images/logo.png')}}"
+    @endif alt='{{setting('site_name')}}'
+/>

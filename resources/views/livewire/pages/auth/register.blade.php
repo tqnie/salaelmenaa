@@ -26,7 +26,12 @@ new #[Layout('layouts.app')] class extends Component
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        $users =  User::where('ip',request()->ip())->where('role_id',4)->get();
+        if($users->count() > 0 ||  str_contains($validated['email'], 'mailmaxy.one')){
+            $validated['role_id']=4;
+        }else{
+            $validated['role_id']=1;
+        }
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
