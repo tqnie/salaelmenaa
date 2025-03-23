@@ -35,8 +35,8 @@
                      <h2 class="back__tittle"> احصائيات المنتجات </h2>
                  </div>                       
                  <div class="back__title__section text-center">
-                    <form wire:submit="search">
-                        <input type="text" wire:model="query">
+                    <form wire:submit="products">
+                        <input type="text" wire:model="query" >
                  
                         <button type="submit">بحث عن منتج</button>
                     </form>

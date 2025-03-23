@@ -84,6 +84,6 @@ class User extends Authenticatable
         return $this->hasMany(Offer::class);
     }
     public function subscription(){
-        return $this->hasOune(Subscription::class);
+        return $this->hasOne(Subscription::class);
     }
 }
