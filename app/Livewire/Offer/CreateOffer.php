@@ -66,7 +66,7 @@ class CreateOffer extends Component
             Toaster::error('بانتظار تفعيل العضوية ');
             return;
         }
-        $subscription=$this->subscription;
+          $subscription=null;//$this->subscription;
         if(!$subscription){
             $package=Package::find($this->package);
             $subscription=Subscription::create(['package_id'=>$this->package,'status'=>null,'user_id'=>Auth::Id(),'quantity'=>$package->quantity]);
