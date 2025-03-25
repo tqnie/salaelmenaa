@@ -20,7 +20,7 @@ ul {
     margin: 0;
     padding: 0;
     border: 0px;
-    float: left;
+    float: right;
 }
 .back-menus li > a {
     color:#c0c0c0;
@@ -67,7 +67,7 @@ body.back-one-page .back-menus > li > a {
 .back-menus li ul.sub-menu {
     background: #fff;
     padding: 18px 0 18px;
-    box-shadow: 30px 0 30px rgba(8,10,41,.10);
+    box-shadow: -30px 0 30px rgba(8,10,41,.10);
 }
 .back-menus li ul.sub-menu > li {
     width: 200px;
@@ -90,26 +90,26 @@ body.back-one-page .back-menus > li > a {
 }
 .back-menus > li > ul.sub-menu > li ul.sub-menu {
     position: absolute;
-    left: 100%;
+    right: 100%;
     top: 0px;
     display: none;
     list-style: none;
 }
 .back-menus > li > ul.sub-menu > li ul.sub-menu > li ul.sub-menu {
     position: absolute;
-    left: 100%;
+    right: 100%;
     top: 0px;
     display: none;
     list-style: none;
 }
 
 .back-menus > li.edge > ul.sub-menu{
-    right: 0;
+    left: 0;
 }
 
 .back-menus li ul.sub-menu li.edge ul.sub-menu,
 .back-menus > li > ul.sub-menu > li.edge ul.sub-menu > li.edge ul.sub-menu {
-    left: -100% !important;
+    right: -100% !important;
 }
 
 /* Menu Toggle Btn
@@ -128,12 +128,12 @@ body.back-one-page .back-menus > li > a {
 
 .menu-toggle .icon-bar:nth-child(1){
     width: 16px;
-    margin-left: auto;
+    margin-right: auto;
 }
 
 .menu-toggle .icon-bar:nth-child(2){
     width: 20px;
-    margin-left: auto;
+    margin-right: auto;
 }
 
 .menu-toggle .icon-bar:hover {
@@ -143,14 +143,14 @@ body.back-one-page .back-menus > li > a {
     width: 25px !important;
 }
 .menu-toggle #menu-btn {
-    float: right;
+    float: left;
     background: #202020;
     border: 1px solid #0C0C0C;
     padding: 8px;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
-    clear: right;
+    clear: left;
     display: none;
 }
 .hide-menu {
@@ -174,7 +174,7 @@ body.back-one-page .back-menus > li > a {
 
 @media screen and (max-width: 991px) {
     .back-menus li ul.sub-menu li a {
-        padding: 12px 40px 12px 50px;
+        padding: 12px 50px 12px 40px;
     }
     .menu-toggle #menu-btn{
         display: block;
@@ -185,35 +185,35 @@ body.back-one-page .back-menus > li > a {
         display: block;
         background: #fff;
         position: absolute;
-        right: 0;
+        left: 0;
         z-index: 99;     
         cursor: pointer;  
-        border-left: 1px solid #f5f3f3;                   
+        border-right: 1px solid #f5f3f3;                   
     }
 
     .back-menus .has-sub .arrow:after{
         content: "";
         position: absolute;
-        border-left: 6px solid transparent;
         border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
         border-top: 10px solid #0d1e50;
         display: block;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);        
+        right: 50%;
+        transform: translate(50%, -50%);        
     }
 
     .back-menus .has-sub.menu-active > .arrow:after{
         content: "";
         position: absolute;
-        border-left: 6px solid transparent;
         border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
         border-bottom: 10px solid #0d1e50;
         border-top: 0px solid #0d1e50;
         display: block;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        right: 50%;
+        transform: translate(50%, -50%);
     }
 
     ul[data-menu-style="vertical"] , ul[data-menu-style="accordion"],
@@ -258,10 +258,10 @@ body.back-one-page .back-menus > li > a {
         width: 100%;
     }
     .back-menus li ul.sub-menu li ul.sub-menu li a{
-        padding-left: 60px;
+        padding-right: 60px;
     }  
     .back-menus li ul.sub-menu li ul.sub-menu li ul.sub-menu li a{
-        padding-left: 80px;
+        padding-right: 80px;
     }  
     .back-menus > li > ul.sub-menu {
         position: static;
