@@ -149,7 +149,7 @@ new class extends Component
             {{-- @if ($avatar)
                 <img src="{{ $avatar->temporaryUrl() }}" width="90"> --}}
             @if(Auth::user()->avatar)
-                <img src="{{ asset('storage/'.Auth::user()->avatar) }}" width="90">
+                <img src="{{ Auth::user()->avatar }}" width="90">
             @endif
             <div x-show="uploading">
                 <progress max="100" x-bind:value="progress"></progress>
