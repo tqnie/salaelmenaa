@@ -5,6 +5,7 @@ namespace App\Livewire;
 
 use App\Models\Package;
 use App\Models\Offer;
+use App\Models\Product;
 use App\Models\User;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
@@ -29,10 +30,13 @@ class Offers extends Component
     public $type;
     #[Url]
     public $user;
-
+    public ?Product $product;
     public function mount()
     {
-
+        if ($this->type) {
+            $this->product = Product::where('slug', $this->type)->first();
+          
+        }
         if (Auth::user()) {
             $user = User::find(Auth::id());
         }

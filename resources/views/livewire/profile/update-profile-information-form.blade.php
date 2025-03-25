@@ -8,8 +8,17 @@ use Livewire\Volt\Component;
 
 new class extends Component
 {
+    use WithFileUploads;
+
     public string $name = '';
+    public string $bio = '';
     public string $email = '';
+    public  $avatar;
+    public string $country= '';
+    public string $city= '';
+    public string $address= '';
+    public string $mobile= '';
+    public string $profession= '';
 
     /**
      * Mount the component.
@@ -18,6 +27,12 @@ new class extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->bio = Auth::user()->bio??'';
+        $this->mobile = Auth::user()->mobile??'';
+        $this->country = Auth::user()->country??'';
+        $this->city = Auth::user()->city??'';
+        $this->address = Auth::user()->address??'';
+        $this->profession = Auth::user()->profession??'';
     }
 
     /**
@@ -29,7 +44,13 @@ new class extends Component
 
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'bio' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'profession' => ['nullable', 'string', 'max:255'],
+            'mobile' => ['nullable', 'string', 'max:255'],
+            'avatar' => ['nullable', 'image', 'max:255'],
+           'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
         ]);
 
         $user->fill($validated);
@@ -37,7 +58,9 @@ new class extends Component
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
-
+        if($this->avatar){
+            $user->avatar=$this->avatar->store('users');
+        }
         $user->save();
 
         $this->dispatch('profile-updated', name: $user->name);
@@ -79,7 +102,11 @@ new class extends Component
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
-
+        <div>
+            <x-input-label for="mobile" :value="__('رقم الجوال')" />
+            <x-text-input wire:model="mobile" id="mobile" class="block mt-1 w-full" type="text" name="mobile" />
+            <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
+        </div>
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" />
@@ -103,7 +130,45 @@ new class extends Component
                 </div>
             @endif
         </div>
-
+        <div>
+            <x-input-label for="bio" :value="__('bio')" />
+            <x-textarea-input wire:model="bio" id="bio" name="bio" type="text" class="mt-1 block w-full" />
+            <x-input-error class="mt-2" :messages="$errors->get('bio')" />
+        </div>
+        <div  x-data="{ uploading: false, progress: 0 }" x-on:livewire-upload-start="uploading = true"
+        x-on:livewire-upload-finish="uploading = false"
+        x-on:livewire-upload-cancel="uploading = false"
+        x-on:livewire-upload-error="uploading = false"
+        x-on:livewire-upload-progress="progress = $event.detail.progress">
+            <x-input-label for="avatar" :value="__('صورة شخصية ')" />
+            <x-text-input wire:model="avatar" id="avatar" class="block mt-1 w-full" type="file" name="avatar" />
+            <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
+                {{-- <div wire:loading wire:target="avatar">Uploading...</div> --}}
+            {{-- @if ($avatar)
+                <img src="{{ $avatar->temporaryUrl() }}" width="90"> --}}
+            @if(Auth::user()->avatar)
+                <img src="{{ asset('storage/'.Auth::user()->avatar) }}" width="90">
+            @endif
+            <div x-show="uploading">
+                <progress max="100" x-bind:value="progress"></progress>
+            </div>
+        </div>
+        <div>
+            <x-input-label for="country" :value="__('الدولة')" />
+            <x-text-input wire:model="country" id="country" class="block mt-1 w-full" type="text" name="country" />
+            <x-input-error :messages="$errors->get('country')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-label for="city" :value="__('المدينة')" />
+            <x-text-input wire:model="city" id="city" class="block mt-1 w-full" type="text" name="city" />
+            <x-input-error :messages="$errors->get('city')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-label for="profession" :value="__('المهنة')" />
+            <x-text-input wire:model="profession" id="profession" class="block mt-1 w-full" type="text"
+                name="profession" />
+            <x-input-error :messages="$errors->get('profession')" class="mt-2" />
+        </div>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
