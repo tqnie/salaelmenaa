@@ -27,7 +27,7 @@
          </div>
          <!--================= Slider Section End Here =================--> 
          <div class="back_popular_topics pt-120 pb-120">
-             <div class="container"> 
+             <div class="container "> 
                  <div class="back__title__section text-center">
                     
                      <p class="">{{setting('section1_desc')}}</h2>
@@ -36,12 +36,15 @@
                      <h6 class="back__subtitle">{{setting('section1_subtitle')}}</h6>
                      <h2 class="back__tittle">{{setting('section1_title')}}</h2>
                  </div>                       
-                 <div class="back__title__section text-center m-5">
-                    <form wire:submit="products">
-                        <input type="text" wire:model="query" >
-                 
-                        <button type="submit">بحث عن منتج</button>
-                    </form>
+                 <div class="back-sidebar">
+                    <div class="back__title__section text-center m-5">
+                        <div class="col-md-6 back-search">
+                            <form wire:submit="products">
+                                <input type="text" wire:model="query" name="input" placeholder="بحث...">
+                                <button> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> </button>
+                            </form>
+                        </div> 
+                    </div>                       
                  </div>                       
                  <div class="row">
                      @foreach ($products as $product)

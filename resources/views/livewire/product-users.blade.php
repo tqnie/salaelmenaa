@@ -18,7 +18,7 @@
                     </div>
                 </div>                                                    
                 <div class="row d-flex align-items-end">
-                    <div class="col-lg-5">
+                    <div class="col-lg-2">
                         <div class="academic__wrapper--image m-img">
                             <img class="academic__wrapper--image-display" src="{{$product->image}}" alt="{{$product->title}}">
                         </div>
