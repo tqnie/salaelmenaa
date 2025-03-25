@@ -1,6 +1,8 @@
 <div class="back-wrapper">
     <div class="back-wrapper-inner gym-page-wrapper">
         <div class="back-course-filter pb-100 pt-120">
+            <div class="container">   <p class=" ">{{setting('section2_desc')}}</p></div>
+
             <div class="container">   
                 <div class="back__course__area   back-sidebar">          
                     <div class="row align-items-center back-vertical-middle shorting__course mb-50 ">
@@ -27,7 +29,6 @@
                         <div class="back__title__section text-left">
                             <h6 class="back__subtitle">{{$product->title}}</h6>
                             <h2 class="back__tittle">    {{$product->body}}     </h2>
-                            <h2 class="back__tittle">{{setting('section2_desc')}}</h2>
                         </div>
                     </div>
                   
