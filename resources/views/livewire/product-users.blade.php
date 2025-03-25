@@ -19,6 +19,11 @@
                 </div>                                                    
                 <div class="row d-flex align-items-end">
                     <div class="col-lg-5">
+                        <div class="academic__wrapper--image m-img">
+                            <img class="academic__wrapper--image-display" src="{{$product->image}}" alt="{{$product->title}}">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
                         <div class="back__title__section text-left">
                             <h6 class="back__subtitle">{{$product->title}}</h6>
                             <h2 class="back__tittle">    {{$product->body}}     </h2>
@@ -26,7 +31,7 @@
                         </div>
                     </div>
                   
-                    <div class="col-lg-7 text-right">
+                    <div class="col-lg-5 text-right">
                         <div class="back-filter">
                             <button class="active" data-filter="*">الكل</button>
                             <button data-filter=".buyer">تجار</button>

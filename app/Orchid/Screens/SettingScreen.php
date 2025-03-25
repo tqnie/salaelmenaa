@@ -33,20 +33,20 @@ class SettingScreen extends Screen
     public function query(): iterable
     {
          return [
-            'website' =>  Setting::getNoCache('website'),
-            'site_open' =>  Setting::getNoCache('site_open'),
-            'site_name' => Setting::getNoCache('site_name'),
-            'site_logo' => Setting::getNoCache('site_logo'),
-            'site_description' => Setting::getNoCache('site_description'),
-            'mobile' => Setting::getNoCache('mobile'),
-            'email' => Setting::getNoCache('email'),
-            'advertiser_ratio' => Setting::getNoCache('advertiser_ratio'),
-            'fixed_amount' => Setting::getNoCache('fixed_amount'),
-            'facebook' => Setting::getNoCache('facebook'),
-            'twitter' => Setting::getNoCache('twitter'),
-            'site_status' => Setting::getNoCache('site_status'),
-            'site_social' => Setting::getNoCache('site_status'),
-            'site_more_links' => Setting::getNoCache('site_status'),
+            'website' =>  Setting::get('website'),
+            'site_open' =>  Setting::get('site_open'),
+            'site_name' => Setting::get('site_name'),
+            'site_logo' => Setting::get('site_logo'),
+            'site_description' => Setting::get('site_description'),
+            'mobile' => Setting::get('mobile'),
+            'email' => Setting::get('email'),
+            'advertiser_ratio' => Setting::get('advertiser_ratio'),
+            'fixed_amount' => Setting::get('fixed_amount'),
+            'facebook' => Setting::get('facebook'),
+            'twitter' => Setting::get('twitter'),
+            'site_status' => Setting::get('site_status'),
+            'site_social' => Setting::get('site_status'),
+            'site_more_links' => Setting::get('site_status'),
         ];
     }
 
