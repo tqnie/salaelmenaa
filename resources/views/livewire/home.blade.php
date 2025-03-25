@@ -13,14 +13,12 @@
                      <div class="container">
                          <div class="slider-content">
                              <div class="content-part">
-                                 <span class="slider-pretitle">سلة بورت</span>
-                                 <h2 class="slider-title">
-                                    اذا لديك مقترح  <br> بخصوص منتجات جديدة.
-                                 </h2>
+                                 <span class="slider-pretitle">{{setting('slider_subtitle')}}</span>
+                                 <h2 class="slider-title">{{setting('slider_title')}}</h2>
                                  <p class="slider-subtitle">
-                                    لم يسبق ان عرضت فارجاء التواصل معنا<br>لنشر المنتجات .
+                                    {{setting('slider_desc')}}
                                  </p>
-                                 <a href="{{route('page.show','contact-us')}}" class="back-btn">تواصل معنا</a>                                        
+                                 <a href="{{setting('slider_url')}}" class="back-btn">تواصل معنا</a>                                        
                              </div>
                          </div>
                      </div>                        
@@ -31,10 +29,10 @@
          <div class="back_popular_topics pt-120 pb-120">
              <div class="container"> 
                  <div class="back__title__section text-center">
-                     <h6 class="back__subtitle">المنتجات</h6>
-                     <h2 class="back__tittle"> احصائيات المنتجات </h2>
+                     <h6 class="back__subtitle">{{setting('section1_subtitle')}}</h6>
+                     <h2 class="back__tittle">{{setting('section1_title')}}</h2>
                  </div>                       
-                 <div class="back__title__section text-center">
+                 <div class="back__title__section text-center m-5">
                     <form wire:submit="products">
                         <input type="text" wire:model="query" >
                  

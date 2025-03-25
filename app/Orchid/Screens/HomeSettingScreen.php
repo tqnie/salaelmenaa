@@ -2,8 +2,15 @@
 
 namespace App\Orchid\Screens;
 
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Request;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Support\Facades\Toast;
 use Orchid\Screen\Screen;
 use Orchid\Setting\Facades\Setting;
+use Orchid\Support\Facades\Layout;
 
 class HomeSettingScreen extends Screen
 {
@@ -15,16 +22,22 @@ class HomeSettingScreen extends Screen
     public function query(): iterable
     {
          return [
-            'slider_title' =>  Setting::getNoCache('slider_title'),
-            'slider_desc' =>  Setting::getNoCache('slider_desc'),
-            'slider_url' => Setting::getNoCache('slider_url'),
-            'slider_url' => Setting::getNoCache('slider_url'),
-            'section1_list' => Setting::getNoCache('section1_list'),
-            'section2_title' => Setting::getNoCache('section2_title'),
-            'section2_desc' => Setting::getNoCache('section2_desc'),
-            'section3_title' => Setting::getNoCache('section3_title')
+            'slider_title' =>  Setting::get('slider_title'),
+            'slider_subtitle' =>  Setting::get('slider_subtitle'),
+            'slider_desc' =>  Setting::get('slider_desc'),
+            'slider_url' => Setting::get('slider_url'),
+            
+            'section1_title' => Setting::get('section1_title'),
+            'section1_subtitle' => Setting::get('section1_subtitle'),
+
+            'section2_title' => Setting::get('section2_title'),
+            'section2_desc' => Setting::get('section2_desc'),
+            
+            'section3_title' => Setting::get('section3_title'),
+            'section3_desc' => Setting::get('section3_desc'),
         ];
     }
+    
 
     /**
      * The name of the screen displayed in the header.
@@ -53,6 +66,54 @@ class HomeSettingScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::columns([
+                Layout::rows([
+                    Input::make('slider_title')
+                        ->title('العنوان'),
+                    Input::make('slider_subtitle')
+                        ->title('العنوان الفرعي'),
+                    Picture::make('site_logo')
+                        ->errorMaxSizeMessage("File size is too large")
+                        ->errorTypeMessage("Invalid file type"),
+                    TextArea::make('slider_desc')
+                        ->title('الوصف')
+                        ->rows(6),
+                    Input::make('slider_url')
+                        ->title('رابط الزر'), 
+                ])->title('السلايدر'),
+                Layout::rows([
+                    Input::make('section1_title')
+                        ->title('العنوان'),
+                    Input::make('section1_subtitle')
+                        ->title('العنوان الفرعي'),
+                     
+                ])->title('المنتجات'),
+                Layout::rows([
+                    Input::make('section2_title')
+                        ->title('العنوان'),
+                    Input::make('section2_desc')
+                        ->title('العنوان الفرعي'),
+                     
+                ])->title('المنتجات'),
+
+               
+
+            ]),
+        ];
+    }
+    public function save(Request $request): void
+    {
+        Cache::flush();
+        $settings = $request->only(
+            'slider_title','slider_subtitle','slider_desc','slider_url',
+            'section1_title','section1_subtitle',
+            'section2_title','section2_desc', 
+        );
+        foreach ($settings as $key => $value) {
+            Setting::set($key, $value ?? '');
+        }
+ 
+        Toast::info(__('Setting updated.'));
     }
 }

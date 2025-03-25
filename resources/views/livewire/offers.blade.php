@@ -10,6 +10,11 @@
                       <h6 class="back__subtitle"></h6>
                       <h2 class="back__tittle">قسم الفيديو  </h2>
                   </div>
+                  <div class="col-md-6 text-right  ">
+                    <a href="{{route('offer.create',[$product->id,'seller'])}}" class=back-btn">اضف فيديو</a>
+                    {{-- <a href="{{route('offer.create',[$product->id,'buyer'])}}" class="back-btn">اشتراك مشتري</a> --}}
+          
+                </div>
                   <div class="row">
                     @foreach ($offers as $offer) 
                       <div class="col-lg-4">

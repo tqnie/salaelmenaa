@@ -22,7 +22,7 @@
                         <div class="back__title__section text-left">
                             <h6 class="back__subtitle">{{$product->title}}</h6>
                             <h2 class="back__tittle">    {{$product->body}}     </h2>
-                            <h2 class="back__tittle">  ان كنت تبيع هذا المنتج سجل كتاجر وان كنت تريد شراء هذا المنتج سجل كمشتري وتقابل مع التاجر في صفحة مستقلة تحدث اليه بالتواصل المرئي</h2>
+                            <h2 class="back__tittle">{{setting('section2_desc')}}</h2>
                         </div>
                     </div>
                   
