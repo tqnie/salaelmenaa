@@ -29,6 +29,10 @@
          <div class="back_popular_topics pt-120 pb-120">
              <div class="container"> 
                  <div class="back__title__section text-center">
+                    
+                     <p class="">{{setting('section1_desc')}}</h2>
+                 </div>                       
+                 <div class="back__title__section text-center">
                      <h6 class="back__subtitle">{{setting('section1_subtitle')}}</h6>
                      <h2 class="back__tittle">{{setting('section1_title')}}</h2>
                  </div>                       

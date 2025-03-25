@@ -77,12 +77,13 @@ class HomeSettingScreen extends Screen
                         ->title('العنوان'),
                     Input::make('slider_subtitle')
                         ->title('العنوان الفرعي'),
-                    Picture::make('site_logo')
-                        ->errorMaxSizeMessage("File size is too large")
-                        ->errorTypeMessage("Invalid file type"),
+                    // Picture::make('site_logo')
+                    //     ->errorMaxSizeMessage("File size is too large")
+                    //     ->errorTypeMessage("Invalid file type"),
                     TextArea::make('slider_desc')
                         ->title('الوصف')
                         ->rows(6),
+                   
                     Input::make('slider_url')
                         ->title('رابط الزر'), 
                 ])->title('السلايدر'),
@@ -91,6 +92,9 @@ class HomeSettingScreen extends Screen
                         ->title('العنوان'),
                     Input::make('section1_subtitle')
                         ->title('العنوان الفرعي'),
+                        TextArea::make('section1_desc')
+                        ->title('الوصف')
+                        ->rows(6),
                      
                 ])->title('المنتجات'),
                 Layout::rows([
@@ -111,7 +115,7 @@ class HomeSettingScreen extends Screen
         Cache::flush();
         $settings = $request->only(
             'slider_title','slider_subtitle','slider_desc','slider_url',
-            'section1_title','section1_subtitle',
+            'section1_title','section1_subtitle','section1_desc',
             'section2_title','section2_desc', 
         );
         foreach ($settings as $key => $value) {
