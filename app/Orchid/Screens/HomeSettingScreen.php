@@ -4,6 +4,7 @@ namespace App\Orchid\Screens;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\TextArea;
@@ -48,15 +49,18 @@ class HomeSettingScreen extends Screen
     {
         return 'HomeSettingScreen';
     }
-
-    /**
+ /**
      * The screen's action buttons.
      *
-     * @return \Orchid\Screen\Action[]
+     * @return Action[]
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Button::make(__('Save'))
+                ->icon('bs.check-circle')
+                ->method('save'),
+        ];
     }
 
     /**
