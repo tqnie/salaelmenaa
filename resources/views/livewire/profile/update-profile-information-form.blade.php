@@ -60,7 +60,8 @@ new class extends Component
             $user->email_verified_at = null;
         }
         if($this->avatar){
-            $user->avatar=$this->avatar->store('users');
+            $image=$this->avatar->store('users');
+            $user->avatar=asset('storage/'.$image);
         }
         $user->save();
 
