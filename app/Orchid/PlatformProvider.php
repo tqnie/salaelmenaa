@@ -40,7 +40,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route( 'platform.settings'),
                 Menu::make('الصفحة الرئيسية  ')
                 ->icon('bs.book') 
-                ->route('platform.settings'),
+                ->route('platform.homesettings'),
 
             // Menu::make('Get Started')
             //     ->icon('bs.book')
