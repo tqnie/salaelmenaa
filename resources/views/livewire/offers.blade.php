@@ -20,10 +20,10 @@
                       <div class="col-lg-4">
                           <div class="course__item mb-30">
                               <div class="course__thumb">
-                                  <a href="{{$offer->video}}" class=" popup-videos"><img src="{{$offer->image}}" alt="image"></a>
+                                  <a href="{{$offer->video}}" class=" popup-videos"><img src="{{$offer->image??asset('assets/images/avatar.png')}}" alt="{{$offer->title}}"></a>
                               </div>
                               <div class="course__inner">
-                                  <span class="back-category cate-1">{{$offer->product->title}}</span>
+                                  <span class="back-category cate-1">@if($offer->product) {{$offer->product->title}}@endif</span>
                                   <h3 class="back-course-title"><a href="{{$offer->video}}" class=" popup-videos">{{$offer->title}}</a></h3>
                                   <div class="course__card-icon d-flex align-items-center">
                                       <div class="course__card-icon--1">
@@ -35,7 +35,7 @@
                                           <span>4.9</span> --}}
                                       </div>
                                       <div class="back__user">
-                                        {{$offer->user->name}}<img src=" {{$offer->user->avatar}}" alt="user">
+                                        {{$offer->user->name}}<img src="{{$offer->user->avatar??asset('assets/images/avatar.png')}}" alt="{{$offer->user->name}}">
                                       </div>
                                   </div>
                               </div>                                    
