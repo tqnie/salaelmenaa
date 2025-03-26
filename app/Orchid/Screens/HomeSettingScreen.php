@@ -30,6 +30,7 @@ class HomeSettingScreen extends Screen
             
             'section1_title' => Setting::get('section1_title'),
             'section1_subtitle' => Setting::get('section1_subtitle'),
+            'section1_desc' => Setting::get('section1_desc'),
 
             'section2_title' => Setting::get('section2_title'),
             'section2_desc' => Setting::get('section2_desc'),
