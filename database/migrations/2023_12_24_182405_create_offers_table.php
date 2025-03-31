@@ -19,9 +19,10 @@ return new class extends Migration
             $table->text('image')->nullable()->default(null);
             $table->text('video')->nullable()->default(null);
             $table->unsignedBigInteger('user_id'); 
+            $table->unsignedBigInteger('to_user_id'); 
             $table->unsignedBigInteger('product_id')->nullable()->default(null);     
             $table->enum('type', ['seller', 'buyer'])->nullable()->default(null);
-            $table->enum('status', ['accepted', 'unaccepted'])->nullable()->default(null);
+            $table->enum('status', ['pending', 'approved', 'rejected'])->nullable()->default('pending');
             $table->timestamps();
         });
     }

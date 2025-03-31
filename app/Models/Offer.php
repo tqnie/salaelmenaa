@@ -14,7 +14,7 @@ class Offer extends Model
 {
     use HasFactory , AsSource, Filterable, Attachable;
     
-    protected $fillable = ['id','title','body','views','image','video','user_id','product_id','type','status'];
+    protected $fillable = ['id','title','body','views','image','video','user_id','to_user_id','product_id','type','status'];
     
     public function scopeSearch($query, $search)
     {
@@ -27,7 +27,15 @@ class Offer extends Model
     }
     public function scopeActive($query)
     {
-        return $query->where('status','ACCEPT');
+        return $query->where('status','approved');
+    }
+    public function scopeProduct($query, $productId)
+    {
+        return $query->where('product_id',$productId);
+    }
+    public function scopeToUser($query, $userId)
+    {
+        return $query->where('to_user_id',$userId);
     }
     public function scopeMy($query, $userId)
     {
@@ -37,6 +45,10 @@ class Offer extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function toUser()
+    {
+        return $this->belongsTo(User::class,'to_user_id');
     }
 
     public function product()

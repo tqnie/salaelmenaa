@@ -31,14 +31,29 @@ class CreateOffer extends Component
     #[Url]
     public $type;
     #[Url]
+    public ?User $user;
+    #[Url]
     public $package;
+    public ?Subscription $subscription;
 
     public function mount()
     {
 
         if (Auth::user()) {
             $user = User::find(Auth::id());
+
+            $subscription=Subscription::where('user_id',$user->id)->where(function($query){
+                return $query->where('status',null)->orWhere('status','accepted');
+            })->first();
+            if($subscription) {
+                if($subscription->quantity>0) {
+                    $this->subscription  = $subscription;
+                }else{
+                    $subscription->update(['status'=>'complated']);
+                }
+            }
             $this->offerForm->setUser($user);
+            $this->offerForm->setToUser($this->user);
             $this->offerForm->setProduct($this->product);
         }
         if ($this->product) {
@@ -66,21 +81,23 @@ class CreateOffer extends Component
             Toaster::error('بانتظار تفعيل العضوية ');
             return;
         }
-     
-          $subscription=null;//$this->subscription;
-        if(!$subscription){
-            $package=Package::find($this->package);
-            if($package)
-                $subscription=Subscription::create(['package_id'=>$this->package,'status'=>null,'user_id'=>Auth::Id(),'quantity'=>$package->quantity]);
+        if (!$this->subscription) {
+            $package = Package::find($this->package);
+            if ($package) {
+                $this->subscription = Subscription::create([
+                    'package_id' => $this->package,
+                    'status' => null,
+                    'user_id' => Auth::Id(),
+                    'quantity' => $package->quantity
+                ]);
+            }
         }
         $this->offerForm->store();
         if ($this->offerForm->offer) {
             $this->offerForm->reset();
-            
-            $user = User::find(Auth::Id());
-            $this->offerForm->setUser($user);
-        
 
+            $user = User::find(Auth::Id());
+            $this->offerForm->setUser($user); 
             try {
                 Toaster::success('تم اضافةً الاعلان ');
             } catch (\Throwable $th) {
@@ -91,17 +108,13 @@ class CreateOffer extends Component
         }
     }
 
-
-    public function subscription()
-    {
-        return  Auth::user()->subscription;
-    }
+ 
     public function offers()
     {
         return Offer::my(Auth::Id())->get();
     }
     public function render()
     {
-        return view('livewire.offer.create', ['offers' => $this->offers(), 'subscription'=>$this->subscription(),'user' => Auth::user()]);
+        return view('livewire.offer.create', ['offers' => $this->offers(), 'user' => Auth::user()]);
     }
 }

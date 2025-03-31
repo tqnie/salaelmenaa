@@ -54,7 +54,7 @@ class OfferResource extends Resource
                 ->title('المنتج'),
             Select::make('status')
                 ->title('الحالة')
-                ->options(['accepted' => 'accepted', 'unaccepted' => 'unaccepted'])
+                ->options(['pending'=>'pending', 'approved'=>'approved', 'rejected'=>'rejected'])
                 ->value('accepted'),
         ]; 
     }

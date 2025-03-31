@@ -11,7 +11,7 @@
                       <h2 class="back__tittle">قسم الفيديو  </h2>
                   </div>
                   <div class="col-md-6 text-right  ">
-                    <a href="{{route('offer.create',[$product->id,'seller'])}}" class=back-btn">اضف فيديو</a>
+                   @if($user) <a href="{{route('offer.create',['product'=>$product->id,'type'=>'seller','user'=>$user->id])}}" class="back-btn">اضف فيديو</a>@endif
                     {{-- <a href="{{route('offer.create',[$product->id,'buyer'])}}" class="back-btn">اشتراك مشتري</a> --}}
           
                 </div>

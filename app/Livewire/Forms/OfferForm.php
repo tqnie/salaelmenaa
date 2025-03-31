@@ -24,6 +24,7 @@ class OfferForm extends Form
     public ?string $type = 'buyer';
     public ?int $productId;
     public ?int $userId;
+    public ?int $toUserId;
     #[Validate('nullable|image')]
     public  $image;
     #[Validate('required|mimes:mp4,mov,avi,mkv|max:102400')]
@@ -38,6 +39,10 @@ class OfferForm extends Form
     public function setProduct(int $productId)
     {
         $this->productId = $productId;
+    }
+    public function setToUser(User $user)
+    {
+        $this->toUserId = $user->id;
     }
     public function store(): void
     {
@@ -54,6 +59,7 @@ class OfferForm extends Form
             $offer->video =asset('storage/'.$video) ;
         }
          $offer->product_id = $this->productId;
+         $offer->to_user_id = $this->toUserId;
          $offer->user_id = $this->userId;
         
         $offer->status =null;

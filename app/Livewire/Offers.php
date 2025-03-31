@@ -29,27 +29,27 @@ class Offers extends Component
     #[Url]
     public $type;
     #[Url]
-    public $user;
+    // public $userId;
+    public ?User $user;
     public ?Product $product;
     public function mount()
     {
         if ($this->type) {
-            $this->product = Product::where('slug', $this->type)->first();
-          
+            $this->product = Product::where('slug', $this->type)->first(); 
         }
-        if (Auth::user()) {
-            $user = User::find(Auth::id());
-        }
+        // if (Auth::user()) {
+        //     $this->user = User::find(Auth::id());
+        // }
     }
   
 
   
     public function offers()
     {
-        return Offer::my($this->user)->search($this->search)->get();
+        return Offer::toUser($this->user)->product($this->product)->active()->search($this->search)->get();
     }
     public function render()
     {
-        return view('livewire.offers', ['offers' => $this->offers(),'user'=>Auth::user()]);
+        return view('livewire.offers', ['offers' => $this->offers()]);
     }
 }

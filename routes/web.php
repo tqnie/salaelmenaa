@@ -42,11 +42,11 @@ Route::middleware('auth')->group(function () {
     // offers
     Route::get('offers', Offers::class)
         ->name('offers');
-    Route::get('offer/create/{product?}/{type?}', CreateOffer::class)
+    Route::get('offer/create/{product?}/{type?}/{user?}', CreateOffer::class)
         ->name('offer.create');
     Route::get('offer/show/{offer}', ShowOffer::class)
         ->name('offer.show');
-        Route::get('offers/{type}/{user}', Offers::class)
+    Route::get('offers/{type}/{user}', Offers::class)
         ->name('offers.user');
 });
 
