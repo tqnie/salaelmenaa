@@ -25,28 +25,32 @@ class Offers extends Component
     #[Url()]
     public $perPage = 5;
     #[Url]
-    public $search; 
+    public $search;
     #[Url]
     public $type;
     #[Url]
     // public $userId;
-    public ?User $user;
-    public ?Product $product;
+    public ?User $user=null;
+    public ?Product $product=null;
     public function mount()
     {
         if ($this->type) {
-            $this->product = Product::where('slug', $this->type)->first(); 
+            $this->product = Product::where('slug', $this->type)->first();
         }
         // if (Auth::user()) {
         //     $this->user = User::find(Auth::id());
         // }
     }
-  
 
-  
+
+
     public function offers()
     {
-        return Offer::toUser($this->user)->product($this->product)->active()->search($this->search)->get();
+        return Offer::where(function ($query) {
+            if ($this->user) {
+                return $query->toUser($this->user->id);
+            }
+        })->product($this->product)->active()->search($this->search)->get();
     }
     public function render()
     {
