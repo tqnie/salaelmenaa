@@ -58,7 +58,7 @@
                                                 <div class="col-lg-6 pdl-5">
                                                     <div class="back-input">
                                                         <x-input-label for="type" :value="__('القسم')" />
-                                                        <select wire:model="offerForm.type" class="from-control" id="type" placeholder="القسم" 
+                                                        <select wire:model.live="offerForm.type"  class="from-control" id="type" placeholder="القسم" 
                                                             name="type">
                                                             <option @selected(old('offerForm.type',$type)=='seller') value="seller">بائع</option>
                                                             <option @selected(old('offerForm.type',$type)=='buyer')  value="buyer">مشتري</option>
