@@ -51,7 +51,7 @@ class Offers extends Component
             if ($user) {
                 return $query->toUser($this->user);
             }
-        })->product($this->product)->active()->search($this->search)->get();
+        })->product($this->product->id??null)->active()->search($this->search)->get();
     }
     public function render()
     {
