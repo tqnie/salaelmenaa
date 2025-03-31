@@ -42,18 +42,20 @@ class CreateOffer extends Component
         if (Auth::user()) {
             $user = User::find(Auth::id());
 
-            $subscription=Subscription::where('user_id',$user->id)->where(function($query){
-                return $query->where('status',null)->orWhere('status','accepted');
+            $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
+                return $query->where('status', null)->orWhere('status', 'accepted');
             })->first();
-            if($subscription) {
-                if($subscription->quantity>0) {
+            if ($subscription) {
+                if ($subscription->quantity > 0) {
                     $this->subscription  = $subscription;
-                }else{
-                    $subscription->update(['status'=>'complated']);
+                } else {
+                    $subscription->update(['status' => 'complated']);
                 }
             }
             $this->offerForm->setUser($user);
-            $this->offerForm->setToUser($this->user);
+
+            $this->offerForm->setToUser($this->user ?? $user);
+
             $this->offerForm->setProduct($this->product);
         }
         if ($this->product) {
@@ -97,7 +99,7 @@ class CreateOffer extends Component
             $this->offerForm->reset();
 
             $user = User::find(Auth::Id());
-            $this->offerForm->setUser($user); 
+            $this->offerForm->setUser($user);
             try {
                 Toaster::success('تم اضافةً الاعلان ');
             } catch (\Throwable $th) {
@@ -108,7 +110,7 @@ class CreateOffer extends Component
         }
     }
 
- 
+
     public function offers()
     {
         return Offer::my(Auth::Id())->get();
