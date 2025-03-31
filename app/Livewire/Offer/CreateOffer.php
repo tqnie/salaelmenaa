@@ -45,7 +45,7 @@ class CreateOffer extends Component
             $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
                 return $query->where('status', null)->orWhere('status', 'accepted');
             })->first();
-            if ($subscription) {
+            if ($subscription!=null) {
                 if ($subscription->quantity > 0) {
                     $this->subscription  = $subscription;
                 } else {
@@ -84,7 +84,7 @@ class CreateOffer extends Component
             Toaster::error('بانتظار تفعيل العضوية ');
             return;
         }
-        if (!$this->subscription) {
+        if ($this->subscription!=null) {
             $package = Package::find($this->package);
             if ($package) {
                 $this->subscription = Subscription::create([
