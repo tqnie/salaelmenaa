@@ -110,7 +110,7 @@
                                                     </div>
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
                                                 </div>   
-                                                @if(old('offerForm.type',$type)=='seller' && $subscription=null) 
+                                                @if(old('offerForm.type',$type)=='seller') 
                                                     <div class="col-lg-12 pdl-5">
                                                         <div class="back-input">
                                                             <x-input-label for="package" :value="__('نوع الاشتراك')" />
