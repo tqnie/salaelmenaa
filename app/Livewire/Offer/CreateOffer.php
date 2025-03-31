@@ -27,14 +27,14 @@ class CreateOffer extends Component
     public OfferForm $offerForm;
     #[Url]
     public $product;
-    public ?Product $productDetials;
+    public ?Product $productDetials= null;
     #[Url]
     public $type;
     #[Url]
-    public ?User $user;
+    public ?User $user= null;
     #[Url]
     public $package;
-    public ?Subscription $subscription;
+    public ?Subscription $subscription= null;
 
     public function mount()
     {
