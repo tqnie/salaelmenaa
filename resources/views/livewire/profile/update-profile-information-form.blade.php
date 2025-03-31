@@ -14,7 +14,7 @@ new class extends Component
     public string $name = '';
     public string $bio = '';
     public string $email = '';
-    public  $avatar;
+    public  $avatar_user;
     public string $country= '';
     public string $city= '';
     public string $address= '';
@@ -50,7 +50,7 @@ new class extends Component
             'city' => ['nullable', 'string', 'max:255'],
             'profession' => ['nullable', 'string', 'max:255'],
             'mobile' => ['nullable', 'string', 'max:255'],
-            'avatar' => ['nullable', 'image', 'max:255'],
+            'avatar_user' => ['nullable', 'image', 'max:255'],
            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
         ]);
 
@@ -59,8 +59,8 @@ new class extends Component
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
-        if($this->avatar){
-            $image=$this->avatar->store('users');
+        if($this->avatar_user){
+            $image=$this->avatar_user->store('users');
             $user->avatar=asset('storage/'.$image);
         }
         $user->save();
@@ -142,9 +142,9 @@ new class extends Component
         x-on:livewire-upload-cancel="uploading = false"
         x-on:livewire-upload-error="uploading = false"
         x-on:livewire-upload-progress="progress = $event.detail.progress">
-            <x-input-label for="avatar" :value="__('صورة شخصية ')" />
-            <x-text-input wire:model="avatar" id="avatar" class="block mt-1 w-full" type="file" name="avatar" />
-            <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
+            <x-input-label for="avatar_user" :value="__('صورة شخصية ')" />
+            <x-text-input wire:model="avatar_user" id="avatar_user" class="block mt-1 w-full" type="file" name="avatar_user" />
+            <x-input-error :messages="$errors->get('avatar_user')" class="mt-2" />
                 {{-- <div wire:loading wire:target="avatar">Uploading...</div> --}}
             {{-- @if ($avatar)
                 <img src="{{ $avatar->temporaryUrl() }}" width="90"> --}}

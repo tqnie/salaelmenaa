@@ -55,7 +55,7 @@
                              </div>
                              <div class="back-content">
                                  <h3 class="back-title"><a href="{{route('product-users',$product->slug)}}">{{$product->title}}</a></h3>
-                                 <p>{{$product->offers->count()}} تاجر </p>
+                                 <p>{{$product->offers->count()}} فيديو </p>
                              </div>                                    
                          </div>
                      </div>
