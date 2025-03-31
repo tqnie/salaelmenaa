@@ -111,7 +111,7 @@
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
                                                 </div>   
                                                 @if($offerForm->type=='seller' && $subscription=null) 
-                                                    <div  class="col-lg-12 pdl-5">
+                                                    <div class="col-lg-12 pdl-5">
                                                         <div class="back-input">
                                                             <x-input-label for="package" :value="__('نوع الاشتراك')" />
                                                             <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
