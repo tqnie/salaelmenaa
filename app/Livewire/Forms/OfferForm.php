@@ -36,6 +36,10 @@ class OfferForm extends Form
         if ($user) $this->userId = $user->id;
     }
     
+    public function setType(string $type)
+    {
+        $this->type = $type;
+    }
     public function setProduct(int $productId)
     {
         $this->productId = $productId;
