@@ -52,6 +52,7 @@ class CreateOffer extends Component
                     $subscription->update(['status' => 'complated']);
                 }
             }
+            $this->offerForm->setType($this->type);
             $this->offerForm->setUser($user);
 
             $this->offerForm->setToUser($this->user ?? $user);
