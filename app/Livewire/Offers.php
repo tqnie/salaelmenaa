@@ -49,7 +49,7 @@ class Offers extends Component
         $user=$this->user;
         return Offer::where(function ($query)use($user) {
             if ($user) {
-                return $query->toUser($this->user);
+                return $query->toUser($user);
             }
         })->product($this->product->id??null)->active()->search($this->search)->get();
     }
