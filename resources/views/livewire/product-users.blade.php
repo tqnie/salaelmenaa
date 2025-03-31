@@ -1,7 +1,7 @@
 <div class="back-wrapper">
     <div class="back-wrapper-inner gym-page-wrapper">
         <div class="back-course-filter pb-100 pt-120">
-            <div class="container">   <p class=" ">{{setting('section2_desc')}}</p></div>
+            <div class="container">   <p class="back__subtitle text-center">{{setting('section2_desc')}}</p></div>
 
             <div class="container">   
                 <div class="back__course__area   back-sidebar">          
