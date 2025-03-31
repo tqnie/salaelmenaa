@@ -46,9 +46,10 @@ class Offers extends Component
 
     public function offers()
     {
-        return Offer::where(function ($query) {
-            if ($this->user) {
-                return $query->toUser($this->user->id);
+        $user=$this->user;
+        return Offer::where(function ($query)use($user) {
+            if ($user) {
+                return $query->toUser($this->user);
             }
         })->product($this->product)->active()->search($this->search)->get();
     }
