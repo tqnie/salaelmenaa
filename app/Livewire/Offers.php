@@ -29,17 +29,18 @@ class Offers extends Component
     #[Url]
     public $type;
     #[Url]
-    // public $userId;
+    public $userId;
     public ?User $user=null;
     public ?Product $product=null;
     public function mount()
     {
+
         if ($this->type) {
             $this->product = Product::where('slug', $this->type)->first();
         }
-        // if (Auth::user()) {
-        //     $this->user = User::find(Auth::id());
-        // }
+        if ($this->userId) {
+            $this->user = User::find($this->userId);
+        }
     }
 
 
