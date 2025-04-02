@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         ->name('offer.create');
     Route::get('offer/show/{offer}', ShowOffer::class)
         ->name('offer.show');
-    Route::get('offers/{type}/{user}', Offers::class)
+    Route::get('offers/{type}/{userId}', Offers::class)
         ->name('offers.user');
 });
 
