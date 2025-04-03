@@ -35,9 +35,9 @@ class Offers extends Component
     public function mount()
     {
 
-        if ($this->type) {
-            $this->product = Product::where('slug', $this->type)->first();
-        }
+        // if ($this->type) {
+        //     $this->product = Product::where('slug', $this->type)->first();
+        // }
         // if ($this->userId) {
         //     $this->user = User::find($this->userId);
         // }
