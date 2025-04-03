@@ -46,8 +46,8 @@ Route::middleware('auth')->group(function () {
         ->name('offer.create');
     Route::get('offer/show/{offer}', ShowOffer::class)
         ->name('offer.show');
-    Route::get('offers/{type}/{userId}', Offers::class)
+    Route::get('offers/{product}/{type}/{userId}', Offers::class)
         ->name('offers.user');
 });
-
+https://portsalla.com/offers/صانعة%20القهوة/1
 require __DIR__ . '/auth.php';

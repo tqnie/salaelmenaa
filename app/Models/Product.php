@@ -20,5 +20,8 @@ class Product extends Model
     public function offers(){
         return $this->hasMany(Offer::class);
     }
-   
+    public function productUser(){
+        return $this->hasOne(ProductUser::class);
+    }
+    
 }

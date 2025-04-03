@@ -13,8 +13,8 @@
                             </form>
                         </div>
                         <div class="col-md-6 text-right  ">
-                            <a href="{{route('offer.create',[$product->id,'seller'])}}" class=back-btn">اشتراك تاجر</a>
-                            <a href="{{route('offer.create',[$product->id,'buyer'])}}" class="back-btn">اشتراك مشتري</a>
+                            <a href="{{route('offer.create',[$product->id,'seller'])}}" wire:click="subscripProduct('seller')" class="back-btn">اشتراك تاجر</a>
+                            <a href="{{route('offer.create',[$product->id,'buyer'])}}" wire:click="subscripProduct('buyer')" class="back-btn">اشتراك مشتري</a>
                   
                         </div>
                     </div>
