@@ -38,9 +38,9 @@ class Offers extends Component
         if ($this->type) {
             $this->product = Product::where('slug', $this->type)->first();
         }
-        if ($this->userId) {
-            $this->user = User::find($this->userId);
-        }
+        // if ($this->userId) {
+        //     $this->user = User::find($this->userId);
+        // }
     }
 
 
