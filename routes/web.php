@@ -49,5 +49,4 @@ Route::middleware('auth')->group(function () {
     Route::get('offers/{product}/{type}/{userId}', Offers::class)
         ->name('offers.user');
 });
-https://portsalla.com/offers/صانعة%20القهوة/1
-require __DIR__ . '/auth.php';
+ require __DIR__ . '/auth.php';
