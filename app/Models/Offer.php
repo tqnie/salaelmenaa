@@ -33,11 +33,11 @@ class Offer extends Model
     {
         return $query->where('product_id',$productId);
     }
-    public function scopeToUser($query, $userId)
+    public function scopeGetToUser($query, $userId)
     {
         return $query->where('to_user_id',$userId);
     }
-    public function scopeMy($query, $userId)
+    public function scopeGetMy($query, $userId)
     {
         return $query->where('user_id',$userId);
     }
