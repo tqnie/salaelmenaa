@@ -34,12 +34,17 @@ class ProductUsers extends Component
     }
     public function subscripProduct($type){
         $user=Auth::user();
+        if(!$user){
+            Toaster::success('سجل الدخول ');
+            return;
+        }
         if($this->productUser){
             Toaster::success('انت مشترك  في قسم .'.$this->product->name);
             return;
         }
         if($user){ 
-           ProductUser::create([
+            ProductUser::create([
+                'product_id'=>$this->product->id,
                 'user_id'=>$user->id,'type'=>$type,
             ]);
             Toaster::success('تم الاشتراك في قسم .'.$this->product->name);
