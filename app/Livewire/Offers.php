@@ -51,7 +51,11 @@ class Offers extends Component
     {
         $user=$this->user;
         $authUser=Auth::user();
-        return Offer::getToUser($this->user->id??null)->getMy($authUser->id??null)->product($this->product->id??null)->active()->search($this->search)->get();
+        return Offer::when($user,function($query)use($authUser,$user){
+            if($this->user->id!=$authUser->id){
+                return $query->getToUser($this->user->id??null);
+            }
+        })->getMy($authUser->id??null)->product($this->product->id??null)->active()->search($this->search)->get();
     }
     public function render()
     {
