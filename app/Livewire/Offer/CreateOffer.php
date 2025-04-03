@@ -114,7 +114,7 @@ class CreateOffer extends Component
 
     public function offers()
     {
-        return Offer::my(Auth::Id())->get();
+        return Offer::getMy(Auth::Id())->get();
     }
     public function render()
     {
