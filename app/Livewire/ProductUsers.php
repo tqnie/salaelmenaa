@@ -45,7 +45,8 @@ class ProductUsers extends Component
         if($user){ 
             ProductUser::create([
                 'product_id'=>$this->product->id,
-                'user_id'=>$user->id,'type'=>$type,
+                'user_id'=>$user->id,
+                'type'=>$type,
             ]);
             Toaster::success('تم الاشتراك في قسم .'.$this->product->name);
         }
