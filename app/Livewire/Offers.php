@@ -29,18 +29,20 @@ class Offers extends Component
     #[Url]
     public $type;
     #[Url]
-    public $userId;
+    public $slug_product;
+    #[Url]
+    public $user_id;
     public ?User $user=null;
     public ?Product $product=null;
     public function mount()
     {
 
-        // if ($this->type) {
-        //     $this->product = Product::where('slug', $this->type)->first();
-        // }
-        // if ($this->userId) {
-        //     $this->user = User::find($this->userId);
-        // }
+        if ($this->slug_product) {
+            $this->product = Product::where('slug', $this->slug_product)->first();
+        }
+        if ($this->user_id) {
+            $this->user = User::find($this->user_id);
+        }
     }
 
 

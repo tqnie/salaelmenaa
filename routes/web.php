@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
         ->name('offer.create');
     Route::get('offer/show/{offer}', ShowOffer::class)
         ->name('offer.show');
-    Route::get('offers/{product}/{type}/{user}', Offers::class)
+    Route::get('offers/{slug_product}/{type}/{user_id}', Offers::class)
         ->name('offers.user');
 });
  require __DIR__ . '/auth.php';
