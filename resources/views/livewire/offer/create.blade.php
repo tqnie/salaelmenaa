@@ -110,21 +110,25 @@
                                                     </div>
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
                                                 </div>   
-                                                @if(old('offerForm.type',$type)=='seller') 
-                                                    <div class="col-lg-12 pdl-5">
-                                                        <div class="back-input">
-                                                            <x-input-label for="package" :value="__('نوع الاشتراك')" />
-                                                            <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
-                                                                name="package">
-                                                                @foreach(App\Models\Package::get() as $package)
-                                                                    <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
-                                                                @endforeach 
-                                                            </select>
-                                                            <x-input-error :messages="$errors->get('package')" class="mt-2" />               
-                                                        </div>
-                                                    </div> 
-                                                    @else 
-                                                     
+                                                @if($offerForm.type=='seller') 
+                                                  
+                                                        <div class="col-lg-12 pdl-5">
+                                                            <div class="back-input">
+                                                                <x-input-label for="package" :value="__('نوع الاشتراك')" />
+                                                                @if($this->subscription==null) 
+                                                                <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
+                                                                    name="package">
+                                                                    @foreach(App\Models\Package::get() as $package)
+                                                                        <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
+                                                                    @endforeach 
+                                                                </select>
+                                                                @else  
+<div class="from-control">{{$this->subscription->package->title}} <br />  عدد الفيديوهات : {{$this->subscription->quantity}} </div> 
+                                                                @endif  
+                                                                <x-input-error :messages="$errors->get('package')" class="mt-2" />               
+                                                            </div>
+                                                        </div>   
+                                                                     
                                                 @endif                                           
                                                 <div class="col-lg-12">      
                                                     <x-primary-button >
