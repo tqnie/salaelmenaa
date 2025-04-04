@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Orchid\Screen\Screen;
@@ -18,6 +19,7 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Setting\Facades\Setting;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
@@ -44,6 +46,7 @@ class SettingScreen extends Screen
             'fixed_amount' => Setting::get('fixed_amount'),
             'facebook' => Setting::get('facebook'),
             'twitter' => Setting::get('twitter'),
+            'offer_status' => Setting::get('offer_status'),
             'register_package_id' => Setting::get('register_package_id'),
             'site_status' => Setting::get('site_status'),
             'site_social' => Setting::get('site_status'),
@@ -119,10 +122,14 @@ class SettingScreen extends Screen
                 ])->title('الاعدادات العامة'),
 
                 Layout::rows([
-                    Input::make('register_package_id')
-                        ->title('رقم الباقة المجانية ')
-                        ->placeholder('الباقة المجانية')
-                        ->required(),
+                  
+                        Relation::make('register_package_id')
+                        ->fromModel(Package::class, 'title')
+                        ->title('رقم الباقة المجانية '),
+                        Select::make('offer_status')
+                        ->title('حالة الفيديو الجديد')
+                        ->options([null=>'new','pending'=>'pending','approved'=> 'approved'])
+                        ->value('active'),
                     Input::make('fixed_amount')
                         ->title(' السعر الثابت  ')
                         ->placeholder('ادخل السعر الثابت  ')
@@ -159,7 +166,7 @@ class SettingScreen extends Screen
     public function save(Request $request): void
     {
         Cache::flush();
-        $settings = $request->only('site_name','register_package_id', 'site_logo', 'site_description', 'mobile', 'email', 'advertiser_ratio', 'fixed_amount', 'facebook', 'twitter', 'site_status');
+        $settings = $request->only('site_name','offer_status','register_package_id', 'site_logo', 'site_description', 'mobile', 'email', 'advertiser_ratio', 'fixed_amount', 'facebook', 'twitter', 'site_status');
         foreach ($settings as $key => $value) {
             Setting::set($key, $value ?? '');
         }

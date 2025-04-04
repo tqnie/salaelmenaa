@@ -3,6 +3,7 @@
 namespace App\Orchid\Resources;
 
 use App\Models\Product;
+use App\Models\Subscription;
 use App\Models\User;
 use Orchid\Crud\Resource;
 use Orchid\Screen\Fields\Cropper;
@@ -12,6 +13,9 @@ use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Sight;
 use Orchid\Screen\TD;
+use Orchid\Support\Facades\Toast;
+use App\Models\Offer;
+use App\Orchid\Actions\OfferStatusAction;
 
 class OfferResource extends Resource
 {
@@ -20,7 +24,7 @@ class OfferResource extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\Offer::class;
+    public static $model =  Offer::class;
 
     /**
      * Get the fields displayed by the resource.
@@ -57,9 +61,9 @@ class OfferResource extends Resource
                 ->title('المنتج'),
             Select::make('status')
                 ->title('الحالة')
-                ->options(['pending'=>'pending', 'approved'=>'approved', 'rejected'=>'rejected'])
+                ->options(['pending' => 'pending', 'approved' => 'approved', 'rejected' => 'rejected'])
                 ->value('accepted'),
-        ]; 
+        ];
     }
 
     /**
@@ -110,5 +114,45 @@ class OfferResource extends Resource
     public function filters(): array
     {
         return [];
+    }
+    /**
+     * Get the actions available for the resource.
+     *
+     * @return array
+     */
+    public function actions(): array
+    {
+        return [
+            OfferStatusAction::class,
+        ];
+    }
+    /**
+     * Action to updateStatus a model
+     *
+     * @param Offer $model
+     *
+     * @throws Exception
+     */
+    public function updateStatus(Offer $model)
+    {
+        $user = User::find($model->user_id);
+
+        $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
+            return $query->where('status', 'accepted');
+        })->first();
+
+        if ($subscription != null) {
+            if ($subscription->quantity > 0) {
+                $subscription->update(['quantity' => $subscription->quantity - 1]);
+                Toast::info('تم تحديث بنجاح');
+            } else {
+                $subscription->update(['status' => 'complated']);
+                Toast::info('الاشتراكات مكتملة');
+            }
+
+            return;
+        } else {
+            Toast::info('لا يوجد هناك اشتراك مفعل');
+        }
     }
 }

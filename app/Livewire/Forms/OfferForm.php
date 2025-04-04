@@ -66,8 +66,9 @@ class OfferForm extends Form
          $offer->to_user_id = $this->toUserId;
          $offer->user_id = $this->userId;
         
-        $offer->status =null;
+        $offer->status =setting('offer_status');
         $offer->save();
+      
         $this->offer = $offer;
     }
 }

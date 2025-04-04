@@ -45,7 +45,7 @@ class CreateOffer extends Component
             $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
                 return $query->where('status', null)->orWhere('status', 'accepted');
             })->first();
-            
+
             if ($subscription!=null) {
                 if ($subscription->quantity > 0) {
                     $this->subscription  = $subscription;
@@ -102,6 +102,9 @@ class CreateOffer extends Component
         }
         $this->offerForm->store();
         if ($this->offerForm->offer) {
+            if( $this->subscription && setting('offer_status')=='approved'){
+                $this->subscription->update(['quantity'=>$this->subscription->quantity-1]);
+            }
             $this->offerForm->reset();
 
             $user = User::find(Auth::Id());
