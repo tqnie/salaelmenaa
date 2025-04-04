@@ -35,7 +35,13 @@ new #[Layout('layouts.app')] class extends Component
         $validated['password'] = Hash::make($validated['password']);
 
         event(new Registered($user = User::create($validated)));
-
+        $package = Package::find(setting('register_package_id')??4);
+        Subscription::create([
+            'package_id' => $package->id,
+            'status' => 'accepted',
+            'user_id' => $user->id,
+            'quantity' => $package->quantity
+        ]);
         Auth::login($user);
 
         $this->redirect(route('home', absolute: false), navigate: false);

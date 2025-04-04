@@ -30,7 +30,7 @@ class ShowOffer extends Component
         $offer = Offer::find($Id);
         if ($offer) {
             $offer->delete();
-            Toast::success('تم حذف  ');
+            Toast::success('تم حذف');
         }
     }
 

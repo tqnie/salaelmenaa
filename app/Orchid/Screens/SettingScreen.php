@@ -44,6 +44,7 @@ class SettingScreen extends Screen
             'fixed_amount' => Setting::get('fixed_amount'),
             'facebook' => Setting::get('facebook'),
             'twitter' => Setting::get('twitter'),
+            'register_package_id' => Setting::get('register_package_id'),
             'site_status' => Setting::get('site_status'),
             'site_social' => Setting::get('site_status'),
             'site_more_links' => Setting::get('site_status'),
@@ -118,6 +119,10 @@ class SettingScreen extends Screen
                 ])->title('الاعدادات العامة'),
 
                 Layout::rows([
+                    Input::make('register_package_id')
+                        ->title('رقم الباقة المجانية ')
+                        ->placeholder('الباقة المجانية')
+                        ->required(),
                     Input::make('fixed_amount')
                         ->title(' السعر الثابت  ')
                         ->placeholder('ادخل السعر الثابت  ')
@@ -154,7 +159,7 @@ class SettingScreen extends Screen
     public function save(Request $request): void
     {
         Cache::flush();
-        $settings = $request->only('site_name', 'site_logo', 'site_description', 'mobile', 'email', 'advertiser_ratio', 'fixed_amount', 'facebook', 'twitter', 'site_status');
+        $settings = $request->only('site_name','register_package_id', 'site_logo', 'site_description', 'mobile', 'email', 'advertiser_ratio', 'fixed_amount', 'facebook', 'twitter', 'site_status');
         foreach ($settings as $key => $value) {
             Setting::set($key, $value ?? '');
         }
