@@ -55,7 +55,7 @@ class Offers extends Component
             if($this->user->id==$authUser->id){
                 return $query->getMy($authUser->id??null)->orWhere('to_user_id',$authUser->id??null);
             }else{
-                return $query->getMy($this->user->id??null)->orWhere('to_user_id',$authUser->id??null);
+                return $query->getMy($authUser->id??null)->where('to_user_id',$this->user->id??null)->orWhere('user_id',$this->user->id??null);
             }
         })->product($this->product->id??null)->active()->search($this->search)->get();
     }
