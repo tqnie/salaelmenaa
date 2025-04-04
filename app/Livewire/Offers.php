@@ -52,10 +52,10 @@ class Offers extends Component
         $user=$this->user;
         $authUser=Auth::user();
         return Offer::where(function($query)use($authUser,$user){
-            if($this->user->id!=$authUser->id){
-                return $query->getToUser($this->user->id??null)->getMy($authUser->id??null);
+            if($this->user->id==$authUser->id){
+                return $query->getMy($authUser->id??null)->orWhere('to_user_id',$authUser->id??null);
             }else{
-                return $query->getMy($authUser->id??null);
+                return $query->getToUser($this->user->id??null)->getMy($authUser->id??null);
             }
         })->product($this->product->id??null)->active()->search($this->search)->get();
     }
