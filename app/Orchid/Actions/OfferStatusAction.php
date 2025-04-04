@@ -26,8 +26,9 @@ class OfferStatusAction extends Action
      */
     public function handle(Collection $models)
     {
-        $models->each(function () {
-            // action
+        dd($models);
+        $models->each(function ($item) {
+            
         });
 
         Toast::message('تم التحديث');
