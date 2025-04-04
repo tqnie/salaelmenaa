@@ -49,6 +49,9 @@ class OfferResource extends Resource
             Relation::make('user_id')
                 ->fromModel(User::class, 'name')
                 ->title('اختر العضو'),
+            Relation::make('to_user_id')
+                ->fromModel(User::class, 'name')
+                ->title(' الي العضو  '),
             Relation::make('product_id')
                 ->fromModel(Product::class, 'title')
                 ->title('المنتج'),
@@ -70,6 +73,7 @@ class OfferResource extends Resource
             TD::make('id'),
             TD::make('title', 'العنوان'),
             TD::make('user_id', 'رقم العضو'),
+            TD::make('to_user_id', ' الي العضو '),
             TD::make('type', 'النوع'),
             TD::make('product_id', 'رقم المنتج'),
             TD::make('status', 'الحالة'),
