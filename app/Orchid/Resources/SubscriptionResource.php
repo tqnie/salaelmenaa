@@ -41,7 +41,7 @@ class SubscriptionResource extends Resource
                 ->placeholder('ادخل عدد الفيديوهات هنا'),
             Select::make('status')
                 ->title('الحالة')
-                ->options(['active' => 'active', 'unactive' => 'unactive'])
+                ->options([null=>'new','complated' => 'complated','accepted' => 'accepted', 'unaccepted' => 'unaccepted', 'cancel' => 'cancel'  ])
                 ->value('active'),
         ];
     }
