@@ -55,7 +55,7 @@
                                                      </div>
                                                 </div>
 
-                                                <div class="col-lg-6 pdl-5">
+                                                {{-- <div class="col-lg-6 pdl-5">
                                                     <div class="back-input">
                                                         <x-input-label for="type" :value="__('القسم')" />
                                                         <select wire:model.live="offerForm.type"  class="from-control" id="type" placeholder="القسم" 
@@ -65,7 +65,7 @@
                                                         </select>
                                                         <x-input-error :messages="$errors->get('offerForm.type')" class="mt-2" />               
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 
                                                 
 
@@ -110,7 +110,7 @@
                                                     </div>
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
                                                 </div>   
-                                                @if($offerForm->type=='seller') 
+                                                
                                                   
                                                         <div class="col-lg-12 pdl-5">
                                                             <div class="back-input">
@@ -129,7 +129,7 @@
                                                             </div>
                                                         </div>   
                                                                      
-                                                @endif                                           
+                                                                                        
                                                 <div class="col-lg-12">      
                                                     <x-primary-button >
                                                         {{ __('اضافة ') }}

@@ -69,7 +69,11 @@ class OfferResource extends Resource
         return [
             TD::make('id'),
             TD::make('title', 'العنوان'),
-            TD::make('created_at', 'Date of creation')
+            TD::make('user_id', 'رقم العضو'),
+            TD::make('type', 'النوع'),
+            TD::make('product_id', 'رقم المنتج'),
+            TD::make('status', 'الحالة'),
+            TD::make('created_at', 'تاريخ الانشاء')
                 ->render(function ($model) {
                     return $model->created_at->toDateTimeString();
                 }),
