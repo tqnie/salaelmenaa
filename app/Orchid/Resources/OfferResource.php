@@ -165,6 +165,6 @@ class OfferResource extends Resource
             Toast::warning('لا يوجد اشتراك مفعل لهذا المستخدم');
         }
 
-        return redirect()->back();
+       // return redirect()->back();
     }
 }
