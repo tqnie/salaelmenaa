@@ -14,6 +14,7 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Sight;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Toast;
+
 use App\Models\Offer;
 use App\Orchid\Actions\OfferStatusAction;
 use Orchid\Screen\Actions\Button;
@@ -154,7 +155,7 @@ class OfferResource extends Resource
 
         if ($subscription) {
             if ($subscription->quantity > 0) {
-                $subscription->decrement('quantity');
+                $subscription->update(['quantity'=>$subscription->quantity-1]);
                 $model->update(['status' => 'approved']);
                 Toast::info('تم التفعيل بنجاح');
             } else {
