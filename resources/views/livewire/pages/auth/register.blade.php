@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\User;
+use App\Models\Package;
+use App\Models\Subscription;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
