@@ -14,10 +14,9 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Sight;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Toast;
-
-use App\Models\Offer;
 use Orchid\Screen\Actions\Button;
-use Illuminate\Http\Request;
+use App\Models\Offer;
+ use Illuminate\Http\Request;
 
 class OfferResource extends Resource
 {
@@ -127,22 +126,7 @@ class OfferResource extends Resource
     {
         return [];
     }
-    /**
-     * Get the actions available for the resource.
-     *
-     * @return array
-     */
-    public function actions(): array
-    {
-        return [
-            Button::make('تفعيل الفيديو')
-            ->method('updateStatus')
-            ->parameters([
-                'id' => 0,  
-            ]),
-        ];
-    }
-
+ 
 
 
 
