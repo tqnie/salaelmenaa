@@ -95,21 +95,40 @@
                                                     name="image" />
                                                 </div>                                               
                                                 <div class="col-lg-12">
-                                                    <div   x-data="{ uploading: false, progress: 0 }" x-on:livewire-upload-start="uploading = true"
-                                                    x-on:livewire-upload-finish="uploading = false"
-                                                    x-on:livewire-upload-cancel="uploading = false"
-                                                    x-on:livewire-upload-error="uploading = false"
-                                                    x-on:livewire-upload-progress="progress = $event.detail.progress">
-                                                        <x-input-label for="views" :value="__('فيديو')" />
-                                                        <x-text-input wire:model="offerForm.video" id="video" type="file"
-                                                            name="video" />
-                                                       
-                                                            <div x-show="uploading">
-                                                                <progress max="100" x-bind:value="progress"></progress>
+                                                    <div 
+                                                        x-data="{ uploading: false, progress: 0 }"
+                                                        x-on:livewire-upload-start="uploading = true"
+                                                        x-on:livewire-upload-finish="uploading = false"
+                                                        x-on:livewire-upload-cancel="uploading = false"
+                                                        x-on:livewire-upload-error="uploading = false"
+                                                        x-on:livewire-upload-progress="progress = $event.detail.progress"
+                                                        class="space-y-2"
+                                                    >
+                                                        <x-input-label for="video" :value="__('فيديو')" />
+                                                
+                                                        <input 
+                                                            wire:model="offerForm.video"
+                                                            id="video"
+                                                            type="file"
+                                                            accept="video/*"
+                                                            name="video"
+                                                            class="block w-full text-sm text-gray-500
+                                                                   file:mr-4 file:py-2 file:px-4
+                                                                   file:rounded-full file:border-0
+                                                                   file:text-sm file:font-semibold
+                                                                   file:bg-blue-50 file:text-blue-700
+                                                                   hover:file:bg-blue-100"
+                                                        />
+                                                
+                                                        <template x-if="uploading">
+                                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                                <div class="bg-blue-600 h-2.5 rounded-full" :style="'width: ' + progress + '%'"></div>
                                                             </div>
+                                                        </template>
                                                     </div>
+                                                
                                                     <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
-                                                </div>   
+                                                </div> 
                                                 
                                                   
                                                         <div class="col-lg-12 pdl-5">
