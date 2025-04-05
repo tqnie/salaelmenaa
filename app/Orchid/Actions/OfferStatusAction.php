@@ -26,7 +26,7 @@ class OfferStatusAction extends Action
      */
     public function handle(Collection $models)
     {
-        dd($models);
+        
         $models->each(function ($item) {
             
         });

@@ -27,14 +27,14 @@ class CreateOffer extends Component
     public OfferForm $offerForm;
     #[Url]
     public $product;
-    public ?Product $productDetials= null;
+    public ?Product $productDetials = null;
     #[Url]
     public $type;
     #[Url]
-    public ?User $user= null;
+    public ?User $user = null;
     #[Url]
     public $package;
-    public ?Subscription $subscription= null;
+    public ?Subscription $subscription = null;
 
     public function mount()
     {
@@ -43,16 +43,24 @@ class CreateOffer extends Component
             $user = User::find(Auth::id());
 
             $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
+
                 return $query->where('status', null)->orWhere('status', 'accepted');
             })->first();
 
-            if ($subscription!=null) {
+            if ($subscription != null) {
                 if ($subscription->quantity > 0) {
                     $this->subscription  = $subscription;
                 } else {
                     $subscription->update(['status' => 'complated']);
                 }
             }
+            $status = null;
+            if (setting('offer_status') == 'approved') {
+                $status = $subscription->status == 'accepted' ? 'approved' : null;
+            } else {
+                $status = setting('offer_status');
+            }
+            $this->offerForm->setStatus($status);
             $this->offerForm->setType($this->type);
             $this->offerForm->setUser($user);
 
@@ -85,9 +93,9 @@ class CreateOffer extends Component
             Toaster::error('بانتظار تفعيل العضوية ');
             return;
         }
-        if ($this->subscription==null) {
+        if ($this->subscription == null) {
             $package = Package::find($this->package);
-            if(!$package){
+            if (!$package) {
                 Toaster::error('اختر باقة');
                 return;
             }
@@ -102,8 +110,9 @@ class CreateOffer extends Component
         }
         $this->offerForm->store();
         if ($this->offerForm->offer) {
-            if( $this->subscription && setting('offer_status')=='approved'){
-                $this->subscription->update(['quantity'=>$this->subscription->quantity-1]);
+
+            if ($this->subscription && setting('offer_status') == 'approved') {
+                $this->subscription->update(['quantity' => $this->subscription->quantity - 1]);
             }
             $this->offerForm->reset();
 
