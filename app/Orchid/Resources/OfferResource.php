@@ -115,7 +115,14 @@ class OfferResource extends Resource
             Sight::make('user_id', 'رقم العضو'),
             Sight::make('to_user_id', ' الي العضو '),
             Sight::make('product_id', 'رقم المنتج'),
-            Sight::make('video')->render(fn($t) => 'Any html'.$t),
+            Sight::make('image')->render(fn($t) => '<img src="' . $t->image . '" width="100" />'),
+
+            Sight::make('video')->render(fn($t) => '
+            <video width="320" height="240" controls>
+                <source src="' . $t->video . '" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        '),
         ];
     }
 
