@@ -105,30 +105,32 @@
                                                         class="space-y-2"
                                                     >
                                                         <x-input-label for="video" :value="__('فيديو')" />
-                                                
+                                                        
+                                                        <!-- تحسين المظهر وإضافة قبول نوع الفيديو -->
                                                         <input 
                                                             wire:model="offerForm.video"
                                                             id="video"
                                                             type="file"
-                                                            accept="video/*"
                                                             name="video"
-                                                            class="block w-full text-sm text-gray-500
-                                                                   file:mr-4 file:py-2 file:px-4
-                                                                   file:rounded-full file:border-0
-                                                                   file:text-sm file:font-semibold
-                                                                   file:bg-blue-50 file:text-blue-700
-                                                                   hover:file:bg-blue-100"
+                                                            accept="video/*"
+                                                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                                                         />
                                                 
-                                                        <template x-if="uploading">
-                                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                                                <div class="bg-blue-600 h-2.5 rounded-full" :style="'width: ' + progress + '%'"></div>
+                                                        <!-- شريط التحميل -->
+                                                        <div x-show="uploading" class="mt-2">
+                                                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                                                <div 
+                                                                    class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
+                                                                    x-bind:style="'width:' + progress + '%'">
+                                                                </div>
                                                             </div>
-                                                        </template>
+                                                            <div class="text-xs mt-1 text-gray-600" x-text="'جارِ التحميل: ' + progress + '%'"></div>
+                                                        </div>
                                                     </div>
                                                 
-                                                    <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2" />
-                                                </div> 
+                                                    <x-input-error :messages="$errors->get('offerForm.video')" class="mt-2 text-sm text-red-600" />
+                                                </div>
+                                                
                                                 
                                                   
                                                         <div class="col-lg-12 pdl-5">
