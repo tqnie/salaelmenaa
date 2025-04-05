@@ -43,10 +43,10 @@
                      
                 <div class="row back-grid">     
                   @foreach ($users as $user)
-                  <div class="single-studies col-lg-6 grid-item @if($user->seller>0) {{'seller'}} @endif   @if($user->buyer>0) {{'buyer'}} @endif   ">
+                  <div class="single-studies col-lg-6 grid-item {{$user->productUser->type}}">
                     <div class="inner-course">
                         <div class="case-img">
-                            <img src="{{$user->avatar}}" alt="Course Image">
+                            <img src="{{$user->avatar}}" alt="{{$user->name}}">
                         </div>
                         <div class="case-content">
                             <ul class="meta-course">
