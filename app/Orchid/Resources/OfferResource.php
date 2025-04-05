@@ -81,16 +81,6 @@ class OfferResource extends Resource
             TD::make('user_id', 'رقم العضو'),
             TD::make('to_user_id', ' الي العضو '),
             TD::make('product_id', 'رقم المنتج'),
-            TD::make('status', 'الحالة'),
-            TD::make('created_at', 'تاريخ الانشاء')
-                ->render(function ($model) {
-                    return $model->created_at->toDateTimeString();
-                }),
-
-            TD::make('updated_at', 'Update date')
-                ->render(function ($model) {
-                    return $model->updated_at->toDateTimeString();
-                }),
             TD::make('تفعيل')
                 ->align(TD::ALIGN_CENTER)
                 ->render(function ($model) {
@@ -105,6 +95,16 @@ class OfferResource extends Resource
 
                     return 'مفعل';
                 }),
+            TD::make('created_at', 'تاريخ الانشاء')
+                ->render(function ($model) {
+                    return $model->created_at->toDateTimeString();
+                }),
+
+            TD::make('updated_at', 'Update date')
+                ->render(function ($model) {
+                    return $model->updated_at->toDateTimeString();
+                }),
+           
         ];
     }
 
