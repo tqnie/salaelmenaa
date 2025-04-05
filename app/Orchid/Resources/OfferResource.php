@@ -16,7 +16,8 @@ use Orchid\Screen\TD;
 use Orchid\Support\Facades\Toast;
 use Orchid\Screen\Actions\Button;
 use App\Models\Offer;
- use Illuminate\Http\Request;
+use App\Orchid\Actions\OfferStatusAction;
+use Illuminate\Http\Request;
 
 class OfferResource extends Resource
 {
@@ -131,8 +132,7 @@ class OfferResource extends Resource
     {
         return [
              
-            // Button::make('تفعيل الفيديو')
-            //     ->method('update_status'),
+            OfferStatusAction::class
         ];
     }
 
