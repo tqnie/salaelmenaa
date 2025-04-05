@@ -127,7 +127,14 @@ class OfferResource extends Resource
         return [];
     }
  
-
+    public function actions(): array
+    {
+        return [
+            
+            Button::make('تفعيل الفيديو')
+                ->method('update_status'),
+        ];
+    }
 
 
     public function update_status(Request $request)
