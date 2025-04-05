@@ -28,7 +28,7 @@
                     <div class="col-lg-5">
                         <div class="back__title__section text-left">
                             <h6 class="back__subtitle">{{$product->title}}</h6>
-                            <h2 class="back__tittle">    {{$product->body}}     </h2>
+                            <h2 class="back__tittle">{{$product->body}}</h2>
                         </div>
                     </div>
                   

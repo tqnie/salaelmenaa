@@ -85,7 +85,7 @@ class OfferResource extends Resource
                 ->render(function ($model) {
                     if ($model->status !== 'approved') {
                         return Button::make('تفعيل')
-                            ->method('updateStatus')
+                            ->method('update_status')
                             ->parameters([
                                 'id' => $model->id,
                             ])
@@ -130,7 +130,7 @@ class OfferResource extends Resource
 
 
 
-    public function updateStatus(Request $request)
+    public function update_status(Request $request)
     {
         $model = Offer::find($request->get('id'));
 
