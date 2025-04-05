@@ -55,15 +55,21 @@ new class extends Component
     </header>
 
     <form wire:submit="updateProfileSubscription" class="mt-6 space-y-6">
-        <div  class="col-lg-12 pdl-5">
+        <div class="col-lg-12 pdl-5">
             <div class="back-input">
                 <x-input-label for="package" :value="__('نوع الاشتراك')" />
+                @if($this->subscription==null) 
                 <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
                     name="package">
-                    @foreach(App\Models\Package::get() as $package)
+                    <option   value="">اختر الباقة</option>
+
+                    @foreach(App\Models\Package::where('id','!=',(setting('register_package_id')??4))->get() as $package)
                         <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
                     @endforeach 
                 </select>
+                @else  
+<div class="from-control">{{$this->subscription->package->title}} <br />  عدد الفيديوهات : {{$this->subscription->quantity}} </div> 
+                @endif  
                 <x-input-error :messages="$errors->get('package')" class="mt-2" />               
             </div>
         </div> 
