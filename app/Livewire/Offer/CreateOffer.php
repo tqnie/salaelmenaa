@@ -41,7 +41,9 @@ class CreateOffer extends Component
 
         if (Auth::user()) {
             $user = User::find(Auth::id());
-
+            if ($this->product) {
+                $this->productDetials = Product::find($this->product);
+            }
             $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
 
                 return $query->where('status', null)->orWhere('status', 'accepted');
@@ -65,11 +67,9 @@ class CreateOffer extends Component
             $this->offerForm->setUser($user);
 
             $this->offerForm->setToUser($this->user ?? $user);
-
-            $this->offerForm->setProduct($this->product);
-        }
-        if ($this->product) {
-            $this->productDetials = Product::find($this->product);
+            if ($this->productDetials) {
+                $this->offerForm->setProduct($this->productDetials->id);
+            }
         }
     }
 
