@@ -130,9 +130,9 @@ class OfferResource extends Resource
     public function actions(): array
     {
         return [
-            
-            Button::make('تفعيل الفيديو')
-                ->method('update_status'),
+             
+            // Button::make('تفعيل الفيديو')
+            //     ->method('update_status'),
         ];
     }
 
