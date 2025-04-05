@@ -16,6 +16,8 @@ use Orchid\Screen\TD;
 use Orchid\Support\Facades\Toast;
 use App\Models\Offer;
 use App\Orchid\Actions\OfferStatusAction;
+use Orchid\Screen\Actions\Button;
+use Illuminate\Http\Request;
 
 class OfferResource extends Resource
 {
@@ -78,7 +80,6 @@ class OfferResource extends Resource
             TD::make('title', 'العنوان'),
             TD::make('user_id', 'رقم العضو'),
             TD::make('to_user_id', ' الي العضو '),
-            TD::make('type', 'النوع'),
             TD::make('product_id', 'رقم المنتج'),
             TD::make('status', 'الحالة'),
             TD::make('created_at', 'تاريخ الانشاء')
@@ -89,6 +90,20 @@ class OfferResource extends Resource
             TD::make('updated_at', 'Update date')
                 ->render(function ($model) {
                     return $model->updated_at->toDateTimeString();
+                }),
+            TD::make('تفعيل')
+                ->align(TD::ALIGN_CENTER)
+                ->render(function ($model) {
+                    if ($model->status !== 'approved') {
+                        return Button::make('تفعيل')
+                            ->method('updateStatus')
+                            ->parameters([
+                                'id' => $model->id,
+                            ])
+                            ->class('btn btn-sm btn-success');
+                    }
+
+                    return 'مفعل';
                 }),
         ];
     }
@@ -126,33 +141,33 @@ class OfferResource extends Resource
             OfferStatusAction::class,
         ];
     }
-    /**
-     * Action to updateStatus a model
-     *
-     * @param Offer $model
-     *
-     * @throws Exception
-     */
-    public function updateStatus(Offer $model)
+
+
+
+
+    public function updateStatus(Request $request)
     {
+        $model = Offer::find($request->get('id'));
+
         $user = User::find($model->user_id);
 
-        $subscription = Subscription::where('user_id', $user->id)->where(function ($query) {
-            return $query->where('status', 'accepted');
-        })->first();
+        $subscription = Subscription::where('user_id', $user->id)
+            ->where('status', 'accepted')
+            ->first();
 
-        if ($subscription != null) {
+        if ($subscription) {
             if ($subscription->quantity > 0) {
-                $subscription->update(['quantity' => $subscription->quantity - 1]);
-                Toast::info('تم تحديث بنجاح');
+                $subscription->decrement('quantity');
+                $model->update(['status' => 'approved']);
+                Toast::info('تم التفعيل بنجاح');
             } else {
                 $subscription->update(['status' => 'complated']);
-                Toast::info('الاشتراكات مكتملة');
+                Toast::info('الاشتراك مكتمل ولا يمكن التفعيل');
             }
-
-            return;
         } else {
-            Toast::info('لا يوجد هناك اشتراك مفعل');
+            Toast::warning('لا يوجد اشتراك مفعل لهذا المستخدم');
         }
+
+        return redirect()->back();
     }
 }
