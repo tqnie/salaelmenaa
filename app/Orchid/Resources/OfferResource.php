@@ -100,10 +100,7 @@ class OfferResource extends Resource
                     return $model->created_at->toDateTimeString();
                 }),
 
-            TD::make('updated_at', 'Update date')
-                ->render(function ($model) {
-                    return $model->updated_at->toDateTimeString();
-                }),
+           
            
         ];
     }
