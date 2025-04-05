@@ -118,6 +118,8 @@
                                                                 @if($this->subscription==null) 
                                                                 <select wire:model="package" class="from-control" id="package" placeholder="الباقة" 
                                                                     name="package">
+                                                                    <option   value="">اختر الباقة</option>
+
                                                                     @foreach(App\Models\Package::where('id','!=',(setting('register_package_id')??4))->get() as $package)
                                                                         <option @selected(old('package')==$package->id) value="{{$package->id}}">{{$package->title}}</option>
                                                                     @endforeach 
