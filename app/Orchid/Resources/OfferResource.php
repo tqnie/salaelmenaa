@@ -99,9 +99,6 @@ class OfferResource extends Resource
                 ->render(function ($model) {
                     return $model->created_at->toDateTimeString();
                 }),
-
-           
-           
         ];
     }
 
@@ -115,6 +112,10 @@ class OfferResource extends Resource
         return [
             Sight::make('id'),
             Sight::make('title', 'العنوان'),
+            Sight::make('user_id', 'رقم العضو'),
+            Sight::make('to_user_id', ' الي العضو '),
+            Sight::make('product_id', 'رقم المنتج'),
+            Sight::make('video')->render(fn($t) => 'Any html'.$t),
         ];
     }
 
