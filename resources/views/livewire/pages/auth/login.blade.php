@@ -66,7 +66,7 @@ new #[Layout('layouts.app')] class extends Component
                                         <div class="back-check-box">
                                             <input type="checkbox" wire:model="form.remember" id="box-1"> تذكرني
                                             @if (Route::has('password.request'))
-                                                <a  href="{{ route('password.request') }}" wire:navigate>
+                                                <a  href="{{ route('password.request') }}">
                                                     {{ __('Forgot your password?') }}
                                                 </a>
                                             @endif
