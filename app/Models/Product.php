@@ -23,5 +23,8 @@ class Product extends Model
     public function productUser(){
         return $this->hasOne(ProductUser::class);
     }
+    public function productUsers(){
+        return $this->hasMany(ProductUser::class);
+    }
     
 }

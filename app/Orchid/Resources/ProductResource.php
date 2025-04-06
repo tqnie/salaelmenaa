@@ -12,6 +12,8 @@ use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Repository;
 use Orchid\Screen\Sight;
+use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductResource extends Resource
 {
@@ -20,7 +22,7 @@ class ProductResource extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = Product::class;
     public static $label = 'المنتجات';
     /**
      * Get the fields displayed by the resource.
@@ -93,5 +95,38 @@ class ProductResource extends Resource
     public function filters(): array
     {
         return [];
+    }
+    /**
+     * Action to delete a model
+     *
+     * @param Model $model
+     *
+     * @throws Exception
+     */
+    public function onDelete(Product $model)
+    {
+        $model->offers->each(function($item){
+            $image_path = str_replace(
+                ['https://portsalla.com/storage/', 'http://portsalla.com/storage/'],
+                'storage/',
+                $item->image
+            );
+            if (Storage::exists($image_path)) {
+                Storage::delete($image_path); 
+            }  
+            $video_path = str_replace(
+                ['https://portsalla.com/storage/', 'http://portsalla.com/storage/'],
+                'storage/',
+                $item->video
+            );
+            if (Storage::exists($video_path)) {
+                Storage::delete($video_path); 
+            }  
+            $item->delete();
+        });
+        $model->productUsers->each(function($item){
+            $item->delete();
+        });
+        $model->delete();
     }
 }

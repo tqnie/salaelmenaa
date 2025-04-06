@@ -18,6 +18,7 @@ use Orchid\Screen\Actions\Button;
 use App\Models\Offer;
 use App\Orchid\Actions\OfferStatusAction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OfferResource extends Resource
 {
@@ -135,11 +136,11 @@ class OfferResource extends Resource
     {
         return [];
     }
- 
+
     public function actions(): array
     {
         return [
-             
+
             OfferStatusAction::class
         ];
     }
@@ -157,7 +158,7 @@ class OfferResource extends Resource
 
         if ($subscription) {
             if ($subscription->quantity > 0) {
-                $subscription->update(['quantity'=>$subscription->quantity-1]);
+                $subscription->update(['quantity' => $subscription->quantity - 1]);
                 $model->update(['status' => 'approved']);
                 Toast::info('تم التفعيل بنجاح');
             } else {
@@ -168,6 +169,35 @@ class OfferResource extends Resource
             Toast::warning('لا يوجد اشتراك مفعل لهذا المستخدم');
         }
 
-       // return redirect()->back();
+        // return redirect()->back();
+    }
+    /**
+     * Action to delete a model
+     *
+     * @param Model $model
+     *
+     * @throws Exception
+     */
+    public function onDelete(Offer $model)
+    {
+
+        $image_path = str_replace(
+            ['https://portsalla.com/storage/', 'http://portsalla.com/storage/'],
+            'storage/',
+            $model->image
+        );
+        if (Storage::exists($image_path)) {
+            Storage::delete($image_path);
+        }
+        $video_path = str_replace(
+            ['https://portsalla.com/storage/', 'http://portsalla.com/storage/'],
+            'storage/',
+            $model->video
+        );
+        if (Storage::exists($video_path)) {
+            Storage::delete($video_path);
+        }
+
+        $model->delete();
     }
 }
