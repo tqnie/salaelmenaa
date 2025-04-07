@@ -39,15 +39,15 @@
             if (w <= $resizeWidth) {
                 $backmenu.find('li.menu-active').removeClass('menu-active');
                 $backmenu.find('ul.slide').removeClass('slide').removeAttr('style');
-                $backmenu.addClass('collapse hide-menu');
+                $backmenu.addClass('collapsee hide-menu');
                 $backmenu.attr('data-menu-style');
                 $('.menu-toggle').show();
             } else {
                 $backmenu.attr('data-menu-style', $back_menu_style);
-                $backmenu.removeClass('collapse hide-menu').removeAttr('style');
+                $backmenu.removeClass('collapsee hide-menu').removeAttr('style');
                 $('.menu-toggle').show();
                 if ($backmenu.attr('data-menu-style') == 'accordion') {
-                    $backmenu.addClass('collapsee');
+                     $backmenu.addClass('collapsee');
                     return;
                 }
                 $backmenu.find('li.menu-active').removeClass('menu-active');
