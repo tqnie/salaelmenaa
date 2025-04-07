@@ -50,7 +50,7 @@ class PostResource extends Resource
                 ->title('الحالة')
                 ->options(['PUBLISHED' => 'PUBLISHED', 'DRAFT' => 'DRAFT', 'PENDING' => 'PENDING'])
                 ->value('PUBLISHED'),
-            Relation::make('author_id')
+            Relation::make('user_id')
                 ->fromModel(User::class, 'name')
                 ->title('اختر العضو'),
                 Switcher::make('featured')

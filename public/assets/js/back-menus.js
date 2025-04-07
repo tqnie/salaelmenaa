@@ -23,7 +23,7 @@
         $backmenu.find('ul').addClass("sub-menu");
         $backmenu.find('li ul').parent().addClass('has-sub');
         $backmenu.find('.has-sub').prepend('<span class="arrow "></span>');
-        if ($back_menu_style == 'accordion') { $(this).addClass('collapse'); }
+        if ($back_menu_style == 'accordion') { $(this).addClass('collapsee'); }
 
         // Window resize on menu breakpoint 
         if ($(window).innerWidth() <= $resizeWidth) {
@@ -47,7 +47,7 @@
                 $backmenu.removeClass('collapse hide-menu').removeAttr('style');
                 $('.menu-toggle').show();
                 if ($backmenu.attr('data-menu-style') == 'accordion') {
-                    $backmenu.addClass('collapse');
+                    $backmenu.addClass('collapsee');
                     return;
                 }
                 $backmenu.find('li.menu-active').removeClass('menu-active');
@@ -65,7 +65,7 @@
         return this.each(function () {
             // Function for Horizontal menu on mouseenter
             $backmenu.on('mouseover', '> li a', function () {
-                if ($backmenu.hasClass('collapse') === true) {
+                if ($backmenu.hasClass('collapsee') === true) {
                     return false;
                 }
               
@@ -75,7 +75,7 @@
             });
 
             $backmenu.on('mouseleave', 'li', function () {
-                if ($backmenu.hasClass('collapse') === true) {
+                if ($backmenu.hasClass('collapsee') === true) {
                     return false;
                 }
                 $(this).off('click', 'li');
@@ -87,7 +87,7 @@
 
             // Function for Vertical/Responsive Menu on mouse click
             $backmenu.on('click', '> li .arrow', function () {
-                if ($backmenu.hasClass('collapse') === false) {
+                if ($backmenu.hasClass('collapsee') === false) {
                     //return false;
                 }
                 $(this).off('mouseover', '> li .arrow');
@@ -106,7 +106,7 @@
             });
 
             $backmenu.on('click', '> li a.hash', function () {
-                if ($backmenu.hasClass('collapse') === false) {
+                if ($backmenu.hasClass('collapsee') === false) {
                     //return false;
                 }
                 $(this).off('mouseover', '> li a.hash');
