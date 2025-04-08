@@ -37,8 +37,15 @@ new class extends Component
                         <ul id="backmenu" class="back-menus back-sub-shadow">
                             <li class="mega-inner"><a href="{{route('home')}}">الرئيسية</a></li>
                             <li> <a href="{{route('profile')}}">حسابي</a></li>                                                                   
-                             <li> <a href="{{route('posts.index')}}">المدونة</a></li>
+                            <li> <a href="{{route('posts.index')}}">المدونة</a></li>
                             <li> <a href="{{route('page.show','contact-us')}}">اتصل بنا</a></li>
+                            @auth
+                             <li class="mobile-menu-account" style="display: none;"> <a href="{{route('profile')}}">الملف الشخصي</a></li>
+                             <li class="mobile-menu-account" style="display: none;"> <a href="javascript:void(0)" wire:click="logout"  >تسجيل خروج</a></li>
+                             @else
+                             <li class="mobile-menu-account" style="display: none;"> <a href="{{route('login')}}">تسجيل دخول</a></li>
+                             <li class="mobile-menu-account" style="display: none;"> <a href="{{route('register')}}">اشتراك</a></li>
+                             @endauth
                         </ul>                                
                         <div class="searchbar-part">
                             @auth

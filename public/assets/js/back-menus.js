@@ -37,15 +37,18 @@
         function menuCollapse() {
             var w = $(window).innerWidth();
             if (w <= $resizeWidth) {
+                
                 $backmenu.find('li.menu-active').removeClass('menu-active');
                 $backmenu.find('ul.slide').removeClass('slide').removeAttr('style');
                 $backmenu.addClass('collapsee hide-menu');
                 $backmenu.attr('data-menu-style');
                 $('.menu-toggle').show();
+                $backmenu.find('.mobile-menu-account').show();
             } else {
                 $backmenu.attr('data-menu-style', $back_menu_style);
                 $backmenu.removeClass('collapsee hide-menu').removeAttr('style');
                 $('.menu-toggle').show();
+                $backmenu.find('.mobile-menu-account').hide();
                 if ($backmenu.attr('data-menu-style') == 'accordion') {
                      $backmenu.addClass('collapsee');
                     return;
@@ -57,6 +60,7 @@
 
         //ToggleBtn Click
         $('#menu-btn').click(function () {
+           
             $backmenu.slideToggle().toggleClass('hide-menu');
         });
 

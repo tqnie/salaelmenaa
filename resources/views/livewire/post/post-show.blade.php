@@ -5,8 +5,8 @@
         <!--================= Back Breadcrumbs Section Start Here =================-->
         <div class="back-breadcrumbs back-breadcrumbs-blog-single">
             <div class="breadcrumbs-wrap">
-                <img class="desktop" src="assets/images/breadcrumbs/3.jpg" alt="Breadcrumbs">
-                <img class="mobile" src="assets/images/breadcrumbs/33.jpg" alt="Breadcrumbs">
+                <img class="desktop" src="{{asset('assets/images/breadcrumbs/3.jpg')}}" alt="Breadcrumbs">
+                <img class="mobile" src="{{asset('assets/images/breadcrumbs/33.jpg')}}" alt="Breadcrumbs">
                 <div class="breadcrumbs-inner">
                     <div class="container">
                         <div class="breadcrumbs-text">
@@ -32,9 +32,9 @@
                         <div class="blog-single-inner">
                             <div class="blog-content">
                                 <div class="blog-image">
-                                    <img src="assets/images/blog-grid/1.jpg" alt="Blog Image">
+                                    <img src="{{$post->image??asset('assets/images/blog-grid/1.jpg')}}" alt=" {{ $post->title}}">
                                 </div>
-
+0
                                 {!! $post->body !!}
 
                                 <div class="blog-tags">
