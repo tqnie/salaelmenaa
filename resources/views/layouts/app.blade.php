@@ -66,7 +66,7 @@
                             <div class="col-lg-3 md-mb-30">
                                 <div class="footer-widget footer-widget-1">
                                     <div class="footer-logo white">
-                                        <a href="index.html" class="logo-text"> <img src="{{asset('assets/images/logo-light.png')}}" alt="{{setting('site_name')}}"></a>
+                                        <a href="?" class="logo-text"> <img src="{{asset('assets/images/logo-light.png')}}" alt="{{setting('site_name')}}"></a>
                                     </div>
                                     <h5 class="footer-subtitle">تواصل معنا</h5>
                                     <ul class="footer-address">
