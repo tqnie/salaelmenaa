@@ -15,6 +15,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Masmerise\Toaster\Toaster;
 use Orchid\Support\Facades\Toast;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 #[Layout('layouts.app')]
 
@@ -36,12 +37,17 @@ class Offers extends Component
     public ?Product $product=null;
     public function mount()
     {
-
+        
         if ($this->slug_product) {
             $this->product = Product::where('slug', $this->slug_product)->first();
+            SEOMeta::setTitle( $this->product->title);
         }
         if ($this->user_id) {
             $this->user = User::find($this->user_id);
+        }
+
+        if ($this->user_id && $this->slug_product) {
+            SEOMeta::setTitle( $this->product->title ." - ".$this->user_id->name);
         }
     }
 

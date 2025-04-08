@@ -4,6 +4,7 @@ namespace App\Livewire\Post;
 
 use App\Models\Category;
 use App\Models\Post;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -17,7 +18,9 @@ class Posts extends Component
 
     #[Url]
     public $search = '';
-    public function mount(?Category $category) {}
+    public function mount(?Category $category) {
+        SEOMeta::setTitle('المدونة');
+    }
     public function posts()
     {
         return Post::search($this->search)->latest()->paginate(10);

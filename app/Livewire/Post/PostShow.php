@@ -3,6 +3,7 @@
 namespace App\Livewire\Post;
 
 use App\Models\Post;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -11,7 +12,7 @@ class PostShow extends Component
 {
     public Post $post;
     public function mount(Post $post){
-
+        SEOMeta::setTitle($post->title);
     }
     public function render()
     {

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Product;
 use App\Models\ProductUser;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -26,6 +27,7 @@ class ProductUsers extends Component
     {
         if ($this->slug) {
             $this->product = Product::where('slug', $this->slug)->first();
+            SEOMeta::setTitle( $this->product->title);
             $user=Auth::user();
             if($user){
                $this->productUser = ProductUser::where('user_id',$user->id)->where('product_id',$this->product->id)->first();

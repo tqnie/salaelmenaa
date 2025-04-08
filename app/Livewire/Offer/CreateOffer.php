@@ -9,6 +9,7 @@ use App\Models\Offer;
 use App\Models\Product;
 use App\Models\Subscription;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
@@ -38,7 +39,7 @@ class CreateOffer extends Component
 
     public function mount()
     {
-
+        SEOMeta::setTitle('اضافة فيديو');
         if (Auth::user()) {
             $user = User::find(Auth::id());
             if ($this->product) {
