@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens;
 
-use App\Livewire\Subscription;
-use App\Models\Active;
+ use App\Models\Subscription;
+ use App\Models\Active;
 use App\Models\Offer;
 use App\Models\Product;
 use App\Models\ProductUser;
