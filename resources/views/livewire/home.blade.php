@@ -8,7 +8,7 @@
                  <div class="single-slide">
                      <div class="slider-img">
                          <img class="desktop" src="{{asset('assets/images/gym/1.jpg')}}" alt="Slider Image 1">
-                         <img class="mobile" src="{{asset('assets/images/gym/11.jpg')}}" alt="Slider Image 1">
+                         <img class="mobile" src="{{asset('assets/images/gym/1.jpg')}}" alt="Slider Image 1">
                      </div>
                      <div class="container">
                          <div class="slider-content">
