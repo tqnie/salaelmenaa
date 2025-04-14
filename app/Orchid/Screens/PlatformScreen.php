@@ -42,8 +42,8 @@ class PlatformScreen extends Screen
             'offers'  => [
                 [
                     'name'   => 'الفيديوهات و الاشتراكات',
-                    'values' => [$product, $subscription, $productUser, $offers, $users],
-                    'labels' => ['المنتجات', 'الاشتراكات', 'اشتراكات المنتجات', 'الفيديوهات', 'الاعضاء'],
+                    'values' => [ $subscription, $productUser, $offers, $users],
+                    'labels' => [  'الاشتراكات', 'اشتراكات المنتجات', 'الفيديوهات', 'الاعضاء'],
                 ],
             ],
 
