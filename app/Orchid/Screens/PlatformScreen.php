@@ -34,16 +34,16 @@ class PlatformScreen extends Screen
         return [
             'users'  => [
                 [
-                    'name'   => 'الاعضاء والزوار',
-                    'values' => [$visitors, $visitorsUsers, $users],
-                    'labels' => ['الزوار المتواجون', 'الاعضاء المتواجدون', 'الاعضاء'],
+                    'name'   => ' الاحصائيات  ',
+                    'values' => [$visitors, $visitorsUsers],
+                    'labels' => ['الزوار المتواجدون', 'الاعضاء المتواجدون'],
                 ],
             ],
             'offers'  => [
                 [
                     'name'   => 'الفيديوهات و الاشتراكات',
-                    'values' => [$product, $subscription, $productUser, $offers],
-                    'labels' => ['المنتجات', 'الاشتراكات', 'اشتراكات المنتجات', 'الفيديوهات'],
+                    'values' => [$product, $subscription, $productUser, $offers, $users],
+                    'labels' => ['المنتجات', 'الاشتراكات', 'اشتراكات المنتجات', 'الفيديوهات', 'الاعضاء'],
                 ],
             ],
 
