@@ -94,8 +94,7 @@ class PlatformScreen extends Screen
     public function layout(): iterable
     {
         return [
-            ChartLineExample::make('users', 'احصائيات')
-            ->description('الزيارات والمتواجون الان'),
+           
             Layout::metrics([
                 'الاعضاء'    => 'metrics.users',
                 'الاعضاء المتواجدون الان' => 'metrics.visitorsUsers',
@@ -107,7 +106,8 @@ class PlatformScreen extends Screen
             ]),
            
             Layout::columns([
-               
+                ChartLineExample::make('users', 'احصائيات')
+            ->description('احصائيات المتواجدون'),
                 ChartPieExample::make('offers', 'المنتجات')
                     ->description('المنتجات والاشتراكات'),
 
