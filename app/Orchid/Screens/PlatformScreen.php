@@ -94,13 +94,8 @@ class PlatformScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::columns([
-                ChartLineExample::make('charts', 'احصائيات')
-                    ->description('الزيارات والمتواجون الان'),
-                ChartPieExample::make('offers', 'المنتجات')
-                    ->description('المنتجات والاشتراكات'),
-
-            ]),
+            ChartLineExample::make('users', 'احصائيات')
+            ->description('الزيارات والمتواجون الان'),
             Layout::metrics([
                 'الاعضاء'    => 'metrics.users',
                 'الاعضاء المتواجدون الان' => 'metrics.visitorsUsers',
@@ -109,6 +104,13 @@ class PlatformScreen extends Screen
                 'الاشتراكات' => 'metrics.subscription',
                 'الفيديوهات' => 'metrics.offers',
                 'المنتجات' => 'metrics.product',
+            ]),
+           
+            Layout::columns([
+               
+                ChartPieExample::make('offers', 'المنتجات')
+                    ->description('المنتجات والاشتراكات'),
+
             ]),
         ];
     }
