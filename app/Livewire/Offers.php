@@ -46,8 +46,8 @@ class Offers extends Component
             $this->user = User::find($this->user_id);
         }
 
-        if ($this->user_id && $this->slug_product) {
-            SEOMeta::setTitle( $this->product->title ." - ".$this->user_id->name);
+        if ($this->user   && $this->product) {
+            SEOMeta::setTitle($this->product->title ." - ".$this->user->name);
         }
     }
 
