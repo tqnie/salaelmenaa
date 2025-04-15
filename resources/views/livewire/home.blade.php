@@ -51,7 +51,7 @@
                      <div class="col-md-3">
                          <div class="item__inner">                                    
                              <div class="icon">
-                                 <img src="{{$product->image}}" style="max-height: 120px" alt="{{$product->title}}">
+                                 <img src="{{$product->image}}" class="m-auto" style="max-height: 120px" alt="{{$product->title}}">
                              </div>
                              <div class="back-content">
                                  <h3 class="back-title"><a href="{{route('product-users',$product->slug)}}">{{$product->title}}</a></h3>
