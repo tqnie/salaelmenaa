@@ -21,14 +21,14 @@
                 </div>                                                    
                 <div class="row d-flex align-items-end">
                     <div class="col-lg-2">
-                        <div class="academic__wrapper--image m-img">
+                        <div class="  m-img">
                             <img class="" src="{{$product->image}}" style="max-height: 120px;" alt="{{$product->title}}">
                         </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="back__title__section " style="text-align: right">
                             <h6 class="back__subtitle">{{$product->title}}</h6>
-                            <h2 class="back__tittle">{{$product->body}}</h2>
+                            <h2 class="back__tittle" style="margin-bottom: 20px">{{$product->body}}</h2>
                         </div>
                     </div>
                   
