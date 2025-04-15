@@ -22,7 +22,7 @@
                 <div class="row d-flex align-items-end">
                     <div class="col-lg-2">
                         <div class="academic__wrapper--image m-img">
-                            <img class="academic__wrapper--image-display" src="{{$product->image}}" alt="{{$product->title}}">
+                            <img class="" src="{{$product->image}}" style="max-height: 100px" alt="{{$product->title}}">
                         </div>
                     </div>
                     <div class="col-lg-5">
