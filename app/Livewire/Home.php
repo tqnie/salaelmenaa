@@ -16,7 +16,7 @@ class Home extends Component
 
     public $query = '';
     public function products(){
-        return Product::where('title', 'like', '%'.$this->query.'%')->active()->latest()->paginate(10);
+        return Product::where('title', 'like', '%'.$this->query.'%')->active()->latest()->paginate(20);
     }
     public function render()
     {
