@@ -1,6 +1,6 @@
 @php
 if (! isset($scrollTo)) {
-    $scrollTo = 'body';
+    $scrollTo = 'back__title__section';
 }
 
 $scrollIntoViewJsSnippet = ($scrollTo !== false)
