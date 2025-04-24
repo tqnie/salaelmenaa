@@ -64,7 +64,7 @@
                  </div>
              </div>
              <div class="text-center pt-20">
-                {{ $products->links(('pagination::semantic-ui')) }}
+                {{ $products->links(('pagination::bootstrap')) }}
                  {{-- <a href="javascript:void(0)"  class="back-btn-border">تحميل المزيد</a> --}}
              </div>
          </div>
