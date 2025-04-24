@@ -1,6 +1,6 @@
 @php
 if (! isset($scrollTo)) {
-    $scrollTo = 'back__title__section';
+    $scrollTo = '.back__title__section';
 }
 
 $scrollIntoViewJsSnippet = ($scrollTo !== false)
@@ -41,7 +41,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                                 <li class="page-item" wire:key="paginator-{{ $paginator->getPageName() }}-page-{{ $page }}"><button type="button" class="page-link" wire:click="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}">{{ $page }}</button></li>
                             @elseif($paginator->currentPage() < $paginator->lastPage() - 3 && $page == $paginator->lastPage()) 
                                 <li class="page-item" wire:key="paginator-{{ $paginator->getPageName() }}-page-{{ $page }}"><button type="button" class="page-link" wire:click="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}">{{ $page }}</button></li>
-                            @elseif($page > $paginator->currentPage() - 2 && $page < $paginator->currentPage() + 2)
+                            @elseif($page > $paginator->currentPage() - 4 && $page < $paginator->currentPage() + 4)
                                 <li class="page-item" wire:key="paginator-{{ $paginator->getPageName() }}-page-{{ $page }}"><button type="button" class="page-link" wire:click="gotoPage({{ $page }}, '{{ $paginator->getPageName() }}')" x-on:click="{{ $scrollIntoViewJsSnippet }}">{{ $page }}</button></li>
                             @endif
                         @endforeach
