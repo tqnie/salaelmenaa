@@ -69,7 +69,101 @@
              </div>
          </div>
 
-       
+         <div class="back-step__area step__area p-relative pt-120 pb-30">
+            <div class="step__shape">
+                <img class="step__shape-2" src="{{asset('assets/images/step/shape/dot.png')}}" alt="طريقة جديدة لادارة التجارة الالكترونية">
+            </div>
+            <div class="container step__width">
+                <div class="row">
+                    <div class="col-xxl-7 offset-xxl-2 col-xl-7 offset-xl-2 col-lg-7 offset-lg-2">
+                       <div class="step__title-content text-center pb-50">
+                           <span class="step__pre-title">الخطوات هي :</span>
+                           <h2 class="step__title">طريقة جديدة لادارة التجارة الالكترونية</h2>
+                       </div>
+                    </div>
+                    <div class="col-xxl-7 col-xl-7 col-lg-8 col-md-12 col-sm-12">
+                        <div class="step__image-area">
+                            <img src="{{asset('assets/images/step/image1.png')}}" alt="boy-image">
+                        </div>
+                    </div>
+                    <div class="col-xxl-5 col-xl-5 col-lg-4 col-md-12">
+                        <div class="step__content">
+                            <div class="step__content1">
+                                <div class="step__content1--icon">
+                                    <div class="step__content1--icon-1">
+                                        <span>01</span>
+                                    </div>
+                                </div>
+                                <div class="step__content1--content">
+                                   <h4> للحصول على عملاء</h4>
+                                   <p>للحصول على عملاء لمتجرك اشترك في المنتج المعروض <br />الذي تبيع او شارك بمنتجك في منصة سلة الميناء </p>
+                                </div>
+                            </div>
+                            <div class="step__content2">
+                                <div class="step__content2--icon">
+                                    <div class="step__content2--icon-2">
+                                        <span>02</span>
+                                    </div>
+                                </div>
+                                <div class="step__content2--content">
+                                   <h4>سيشترك</h4>
+                                   <p>سيشترك المشترين <br> في المنتج الذي اخترته
+                                   </p>
+                                </div>
+                            </div>
+                            <div class="step__content3">
+                                <div class="step__content3--icon">
+                                    <div class="step__content3--icon-3">
+                                       <span>03</span>
+                                    </div>
+                                </div>
+                                <div class="step__content3--content">
+                                    <h4>ادخل على المشتري</h4>
+                                    <p>ادخل على المشتري واضف فيديو له واعرض عروضك  <br> عليه باضافة فيديوهات كذلك طرق التواصل بك
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step__content4">
+                                <div class="step__content4--icon">
+                                    <div class="step__content4--icon-4">
+                                        <span>04</span>
+                                    </div>
+                                </div>
+                                <div class="step__content4--content">
+                                    <h4>سيتجاوب المشتري</h4>
+                                    <p>سيتجاوب المشتري ويضيف فيديو لك <br>ويطلب شراء المنتج منك
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="step__content1">
+                                <div class="step__content1--icon">
+                                    <div class="step__content1--icon-1">
+                                        <span>05</span>
+                                    </div>
+                                </div>
+                                <div class="step__content1--content">
+                                   <h4>جهز الطلب </h4>
+                                   <p>وارسل فاتورة الدفع بالايميل <br />من خلال منصة ميسر
+                                   </p>
+                                </div>
+                            </div>
+                            <div class="step__content2">
+                                <div class="step__content2--icon">
+                                    <div class="step__content2--icon-2">
+                                        <span>06</span>
+                                    </div>
+                                </div>
+                                <div class="step__content2--content">
+                                   <h4> اشحن الطلب </h4>
+                                   <p> للمشتري عبر شركات الشحن <br> مثل سمسا او ارامكس      
+                                   </p>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
        
     
      </div>
