@@ -2573,7 +2573,7 @@ ul {
 .back-step__area .step__content1 {
   display: flex;
   margin-right: -22%;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 .back-step__area .step__content1--icon {
   margin-left: 35px;
@@ -2615,7 +2615,7 @@ ul {
 }
 .back-step__area .step__content2 {
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .back-step__area .step__content2--icon {
   margin-left: 30px;
@@ -2654,7 +2654,7 @@ ul {
 }
 .back-step__area .step__content3 {
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .back-step__area .step__content3--icon {
   margin-left: 30px;
@@ -2694,7 +2694,7 @@ ul {
 .back-step__area .step__content4 {
   display: flex;
   margin-right: -25%;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .back-step__area .step__content4--icon {
   margin-left: 35px;
