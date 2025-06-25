@@ -13,7 +13,7 @@
                             </form>
                         </div>
                         <div class="col-md-6 text-right  ">
-                            <a href="javascript:void(0)" wire:click="subscripProduct('seller')" class="back-btn">اشتراك تاجر</a>
+                            <a href="javascript:void(0)" wire:click="subscripProduct('seller')" class="back-btn">اشتراك مؤجر</a>
                             <a href="javascript:void(0)" wire:click="subscripProduct('buyer')" class="back-btn">اشتراك مستأجر</a>
                   
                         </div>
