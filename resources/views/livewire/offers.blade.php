@@ -12,7 +12,7 @@
                   </div>
                   <div class="col-md-6 text-right  ">
                    @if($user) <a href="{{route('offer.create',['product'=>$product->id,'type'=>'seller','user'=>$user->id])}}" class="back-btn m-3">اضف فيديو</a>@endif
-                    {{-- <a href="{{route('offer.create',[$product->id,'buyer'])}}" class="back-btn">اشتراك مشتري</a> --}}
+                    {{-- <a href="{{route('offer.create',[$product->id,'buyer'])}}" class="back-btn">اشتراك مستأجر</a> --}}
           
                 </div>
                   <div class="row">
