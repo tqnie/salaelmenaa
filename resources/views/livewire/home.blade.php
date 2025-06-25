@@ -69,7 +69,7 @@
              </div>
          </div>
 
-         <div class="back-step__area step__area p-relative pt-120 pb-30">
+         {{-- <div class="back-step__area step__area p-relative pt-120 pb-30">
             <div class="step__shape">
                 <img class="step__shape-2" src="{{asset('assets/images/step/shape/dot.png')}}" alt="طريقة جديدة لادارة التجارة الالكترونية">
             </div>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
        
     
      </div>
