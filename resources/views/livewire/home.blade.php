@@ -71,14 +71,14 @@
 
          {{-- <div class="back-step__area step__area p-relative pt-120 pb-30">
             <div class="step__shape">
-                <img class="step__shape-2" src="{{asset('assets/images/step/shape/dot.png')}}" alt="طريقة جديدة لادارة التجارة الالكترونية">
+                <img class="step__shape-2" src="{{asset('assets/images/step/shape/dot.png')}}" alt="طريقة جديدة لادارة المؤجرينة الالكترونية">
             </div>
             <div class="container step__width">
                 <div class="row">
                     <div class="col-xxl-7 offset-xxl-2 col-xl-7 offset-xl-2 col-lg-7 offset-lg-2">
                        <div class="step__title-content text-center pb-50">
                            <span class="step__pre-title">الخطوات هي :</span>
-                           <h2 class="step__title">طريقة جديدة لادارة التجارة الالكترونية</h2>
+                           <h2 class="step__title">طريقة جديدة لادارة المؤجرينة الالكترونية</h2>
                        </div>
                     </div>
                     <div class="col-xxl-7 col-xl-7 col-lg-8 col-md-12 col-sm-12">

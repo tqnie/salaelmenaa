@@ -35,7 +35,7 @@
                     <div class="col-lg-5 text-right">
                         <div class="back-filter">
                             <button class="active" data-filter="*">الكل</button>
-                            <button data-filter=".seller">تجار</button>
+                            <button data-filter=".seller">مؤجرين</button>
                             <button data-filter=".buyer">مستأجرين</button>
                         </div>
                     </div>
