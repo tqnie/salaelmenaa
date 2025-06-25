@@ -61,7 +61,7 @@
                                                         <select wire:model.live="offerForm.type"  class="from-control" id="type" placeholder="القسم" 
                                                             name="type">
                                                             <option @selected(old('offerForm.type',$type)=='seller') value="seller">بائع</option>
-                                                            <option @selected(old('offerForm.type',$type)=='buyer')  value="buyer">مشتري</option>
+                                                            <option @selected(old('offerForm.type',$type)=='buyer')  value="buyer">مستأجر</option>
                                                         </select>
                                                         <x-input-error :messages="$errors->get('offerForm.type')" class="mt-2" />               
                                                     </div>
