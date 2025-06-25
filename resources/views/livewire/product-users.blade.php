@@ -13,8 +13,8 @@
                             </form>
                         </div>
                         <div class="col-md-6 text-right  ">
-                            <a href="javascript:void(0)" wire:click="subscripProduct('seller')" class="back-btn">اشتراك مؤجر</a>
-                            <a href="javascript:void(0)" wire:click="subscripProduct('buyer')" class="back-btn">اشتراك مستأجر</a>
+                            <a href="javascript:void(0)" wire:click="subscripProduct('seller')" class="back-btn">اشتراك تاجر</a>
+                            <a href="javascript:void(0)" wire:click="subscripProduct('buyer')" class="back-btn">اشتراك مشتري</a>
                   
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="back-filter">
                             <button class="active" data-filter="*">الكل</button>
                             <button data-filter=".seller">تجار</button>
-                            <button data-filter=".buyer">مستأجرين</button>
+                            <button data-filter=".buyer">مشترين</button>
                         </div>
                     </div>
                 </div>  
